@@ -45,10 +45,6 @@ public class ServiceFactory {
         httpClientBuilder.writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
         httpClientBuilder.readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
 
-        //设置缓存
-//        File httpCacheDirectory = new File(FileUtil.getCacheFile(MyApp.getContext()), "OkHttpCache");
-//        httpClientBuilder.cache(new Cache(httpCacheDirectory, 10 * 1024 * 1024));
-
         return httpClientBuilder.build();
     }
 }

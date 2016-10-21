@@ -10,11 +10,18 @@ import com.tencent.smtt.sdk.QbSdk;
 
 public class MyApp extends Application {
 
-    public static Context context;
+    private static Context context;
+
+
+    public static Context getContext() {
+        return context;
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+        context = this;
 
         initUtil();
     }
@@ -23,10 +30,6 @@ public class MyApp extends Application {
 
         CrashHandler crashHandler = CrashHandler.getInstance();
         crashHandler.init(getApplicationContext());
-
-//        PreferenceUtil.init(context);
-
-//        cache = AppCache.init(this);
 
         QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
 

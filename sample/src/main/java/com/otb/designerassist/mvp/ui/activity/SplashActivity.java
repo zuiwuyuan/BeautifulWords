@@ -1,18 +1,20 @@
 package com.otb.designerassist.mvp.ui.activity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.otb.designerassist.R;
 import com.otb.designerassist.mvp.ui.common.BaseActivity;
-import com.otb.designerassist.util.ACache;
 
 /**
  * 启动页
  */
 public class SplashActivity extends BaseActivity {
+
+    private static final int SHOW_TIME_MIN = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,5 +36,36 @@ public class SplashActivity extends BaseActivity {
 
         setContentView(R.layout.activity_splash);
 
+        new SplashTask().execute();
+
+    }
+
+    public class SplashTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            // 最短启动时间
+            long startTime = System.currentTimeMillis();
+
+            long loadingTime = System.currentTimeMillis() - startTime;
+
+            if (loadingTime < SHOW_TIME_MIN) {
+                try {
+                    Thread.sleep(SHOW_TIME_MIN - loadingTime);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+
+            SplashActivity.this.finish();
+        }
     }
 }
