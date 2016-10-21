@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Library</string>
+
+    <!--footer-->
+    <string name="list_footer_loading">加载中...</string>
+    <string name="list_footer_network_error">点击重新加载</string>
+    <string name="list_footer_end">加载完毕</string>
+
+</resources>
