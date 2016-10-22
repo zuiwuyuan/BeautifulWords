@@ -1,8 +1,8 @@
 package com.otb.designerassist.mvp.ui.view;
 
 /**
- * 登录
+ * 名人名句
  */
-public interface ILoginView {
+public interface IAllarticleView {
 
 }

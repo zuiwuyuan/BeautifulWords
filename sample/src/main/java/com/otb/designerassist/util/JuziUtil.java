@@ -1,14 +1,12 @@
 package com.otb.designerassist.util;
 
 import android.content.Context;
-import android.content.Intent;
 
 import com.apkfuns.logutils.LogUtils;
 import com.google.gson.Gson;
 import com.otb.designerassist.mvp.model.entity.SentenceCollection;
 import com.otb.designerassist.mvp.model.entity.SentenceDetail;
 import com.otb.designerassist.mvp.model.entity.SentenceImageText;
-import com.otb.designerassist.mvp.model.entity.SentenceSimple;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -29,7 +27,7 @@ public class JuziUtil {
      *
      * @param url
      */
-    public void getMemorableQuotes(final Context mContext, final String url) {
+  /*  public void getMemorableQuotes(final Context mContext, final String url) {
 
         new Thread(new Runnable() {
             @Override
@@ -113,7 +111,7 @@ public class JuziUtil {
                 }
             }
         }).start();
-    }
+    }*/
 
 
     /**

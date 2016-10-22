@@ -1,7 +1,5 @@
 package com.otb.designerassist.http;
 
-import com.otb.designerassist.http.gson.CustomGsonConverterFactory;
-
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -11,9 +9,11 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 public class ServiceFactory {
 
     public ServiceFactory() {
+
     }
 
     private static class SingletonHolder {
+
         private static final ServiceFactory INSTANCE = new ServiceFactory();
     }
 
@@ -21,14 +21,12 @@ public class ServiceFactory {
         return SingletonHolder.INSTANCE;
     }
 
-    public <T> T createService(Class<T> serviceClass) {
-
-        String baseUrl = Api.BASE_URL;
+    public <T> T createService(Class<T> serviceClass, String baseUrl) {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .client(getOkHttpClient())
-                .addConverterFactory(CustomGsonConverterFactory.create())
+//                .addConverterFactory(CustomGsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
         return retrofit.create(serviceClass);
@@ -39,7 +37,19 @@ public class ServiceFactory {
     private OkHttpClient getOkHttpClient() {
         //定制OkHttp
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
+
         httpClientBuilder.addInterceptor(new HttpLoggingInterceptor());
+//        httpClientBuilder.addInterceptor(new Interceptor() {
+//            @Override
+//            public Response intercept(Chain chain) throws IOException {
+//                Request request = chain.request()
+//                        .newBuilder()
+//                        .addHeader("User-Agent", "Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52")
+//                        .build();
+//                return chain.proceed(request);
+//            }
+//
+//        });
         //设置超时时间
         httpClientBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
         httpClientBuilder.writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);

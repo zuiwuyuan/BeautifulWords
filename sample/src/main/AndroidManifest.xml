@@ -3,6 +3,7 @@
     package="com.otb.designerassist">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:name=".app.MyApp"
@@ -12,9 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity
-            android:name=".mvp.ui.activity.SplashActivity"
-            android:screenOrientation="landscape">
+        <activity android:name=".mvp.ui.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,13 +21,9 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".mvp.ui.activity.MainActivity"
-            android:screenOrientation="landscape" />
+        <activity android:name=".mvp.ui.activity.MainActivity" />
 
-        <activity
-            android:name=".mvp.ui.common.WebBrowseActivity"
-            android:screenOrientation="landscape" />
+        <activity android:name=".mvp.ui.common.WebBrowseActivity" />
 
         <meta-data
             android:name="com.otb.designerassist.common.GlideConfiguration"
