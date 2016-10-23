@@ -11,6 +11,7 @@ public class SentenceCollection {
     private String detailUrl;
     private String username;
     private String count;
+    private String createTime;
 
     public String getTitle() {
         return title;
@@ -60,6 +61,14 @@ public class SentenceCollection {
         this.desc = desc;
     }
 
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
     @Override
     public String toString() {
         return "SentenceCollection{" +
@@ -69,6 +78,7 @@ public class SentenceCollection {
                 ", detailUrl='" + detailUrl + '\'' +
                 ", username='" + username + '\'' +
                 ", count='" + count + '\'' +
+                ", createTime='" + createTime + '\'' +
                 '}';
     }
 }

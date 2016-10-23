@@ -49,13 +49,4 @@ public class SentenceImageText {
         this.pic = pic;
     }
 
-    @Override
-    public String toString() {
-        return "SentenceImageText{" +
-                "text='" + text + '\'' +
-                ", desc='" + desc + '\'' +
-                ", url='" + url + '\'' +
-                ", pic='" + pic + '\'' +
-                '}';
-    }
 }

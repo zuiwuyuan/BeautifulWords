@@ -5,22 +5,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.otb.designerassist.R;
-import com.otb.designerassist.common.JuziApi;
+import com.otb.designerassist.mvp.presenter.impl.AlbumsPresenter;
 import com.otb.designerassist.mvp.presenter.impl.AllarticlePresenter;
+import com.otb.designerassist.mvp.presenter.impl.ImgTextPresenter;
 import com.otb.designerassist.mvp.presenter.impl.OrignalPresenter;
+import com.otb.designerassist.mvp.ui.view.IAlbumsView;
 import com.otb.designerassist.mvp.ui.view.IAllarticleView;
+import com.otb.designerassist.mvp.ui.view.IMeituMeijuView;
 import com.otb.designerassist.mvp.ui.view.IOrignalView;
-import com.otb.designerassist.util.JuziUtil;
 
 import butterknife.ButterKnife;
 
 
-public class MainActivity extends AppCompatActivity implements IAllarticleView, IOrignalView {
+public class MainActivity extends AppCompatActivity implements IAllarticleView, IOrignalView, IAlbumsView, IMeituMeijuView {
 
 
     private AllarticlePresenter allarticlePresenter;
 
     private OrignalPresenter orignalPresenter;
+
+    private AlbumsPresenter albumsPresenter;
+
+    private ImgTextPresenter imgTextPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +38,10 @@ public class MainActivity extends AppCompatActivity implements IAllarticleView, 
         allarticlePresenter = new AllarticlePresenter(this);
 
         orignalPresenter = new OrignalPresenter(this);
+
+        albumsPresenter = new AlbumsPresenter(this);
+
+        imgTextPresenter = new ImgTextPresenter(this);
     }
 
     /**
@@ -40,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements IAllarticleView, 
      * 名人名句-散文美句
      * 名人名句-散文美句
      * 名人名句-连续剧台词
-     * <p>
+     * <p/>
      * 这些个部分虽然请求的url不尽相同，但是数据解析的方式是一样的。
      *
      * @param view
@@ -90,11 +100,12 @@ public class MainActivity extends AppCompatActivity implements IAllarticleView, 
      */
     public void onClick3(View view) {
 
-        int page = 0;
-        final String url = JuziApi.ALBUMS + page;
+        String page = null;
 
-        JuziUtil juziUtil = new JuziUtil();
-        juziUtil.getJuziCollection(this, url);
+        // 精选句集   "http://www.juzimi.com/albums?page=";
+        // 最新句集  http://www.juzimi.com/newalbums?page=";
+
+        albumsPresenter.loadAlbums(this, "albums", page);
     }
 
     /**
@@ -104,11 +115,15 @@ public class MainActivity extends AppCompatActivity implements IAllarticleView, 
      */
     public void onClick4(View view) {
 
-        int page = 0;
-        final String url = JuziApi.NEWALBUMS + page;
+//        int page = 0;
+//        final String url = JuziApi.NEWALBUMS + page;
+//
+//        JuziUtil juziUtil = new JuziUtil();
+//        juziUtil.getJuziCollection(this, url);
 
-        JuziUtil juziUtil = new JuziUtil();
-        juziUtil.getJuziCollection(this, url);
+        String page = null;
+
+        albumsPresenter.loadAlbums(this, "newalbums", page);
     }
 
     /**
@@ -118,12 +133,25 @@ public class MainActivity extends AppCompatActivity implements IAllarticleView, 
      */
     public void onClick5(View view) {
 
-        int page = 1;
-        final String url = JuziApi.MEITUMEIJU + page;
+        // 美图美句   "http://www.juzimi.com/meitumeiju?page=";
 
-        JuziUtil juziUtil = new JuziUtil();
-        juziUtil.getSentenceImgText(this, url);
+        String page = null;
+        imgTextPresenter.loadImgText(this, page);
+    }
 
+    /**
+     * 美图美句
+     *
+     * @param view
+     */
+    public void onClick6(View view) {
+
+        // 手写美句   "http://www.juzimi.com/meitumeiju/shouxiemeiju?page=";
+        // 经典对白   "http://www.juzimi.com/meitumeiju/jingdianduibai?page=";
+
+        String page = null;
+        String type = "shouxiemeiju";
+        imgTextPresenter.loadImgText(this, type, page);
     }
 
 }
