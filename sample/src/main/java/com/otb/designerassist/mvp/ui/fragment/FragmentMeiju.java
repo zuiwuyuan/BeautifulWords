@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
-public class FragmentMeiju extends Fragment{
+public class FragmentMeiju extends Fragment {
 
 
     private static final String TYPE1 = null;
@@ -39,14 +39,6 @@ public class FragmentMeiju extends Fragment{
 
     private Unbinder unbinder;
 
-    private List<Fragment> list_fragment;
-    private List<String> list_title;
-
-    private FragmentMeijuList fragmentMeijuList1;
-    private FragmentMeijuList fragmentMeijuList2;
-    private FragmentMeijuList fragmentMeijuList3;
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,7 +48,6 @@ public class FragmentMeiju extends Fragment{
 
         unbinder = ButterKnife.bind(this, view);
 
-
         initControls();
 
         return view;
@@ -65,18 +56,18 @@ public class FragmentMeiju extends Fragment{
     private void initControls() {
 
         //初始化各fragment
-        fragmentMeijuList1 = FragmentMeijuList.newInstance(TYPE1);
-        fragmentMeijuList2 = FragmentMeijuList.newInstance(TYPE2);
-        fragmentMeijuList3 = FragmentMeijuList.newInstance(TYPE3);
+        FragmentMeijuList fragmentMeijuList1 = FragmentMeijuList.newInstance(TYPE1);
+        FragmentMeijuList fragmentMeijuList2 = FragmentMeijuList.newInstance(TYPE2);
+        FragmentMeijuList fragmentMeijuList3 = FragmentMeijuList.newInstance(TYPE3);
 
         //将fragment装进列表中
-        list_fragment = new ArrayList<>();
+        List<Fragment> list_fragment = new ArrayList<>();
         list_fragment.add(fragmentMeijuList1);
         list_fragment.add(fragmentMeijuList2);
         list_fragment.add(fragmentMeijuList3);
 
         //将名称加载tab名字列表，正常情况下，我们应该在values/arrays.xml中进行定义然后调用
-        list_title = new ArrayList<>();
+        List<String> list_title = new ArrayList<>();
         list_title.add("美图美句");
         list_title.add("原创句子");
         list_title.add("手写句子");
@@ -97,6 +88,7 @@ public class FragmentMeiju extends Fragment{
 
     @Override
     public void onDestroyView() {
+
         super.onDestroyView();
 
         unbinder.unbind();

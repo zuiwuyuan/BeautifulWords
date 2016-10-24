@@ -6,13 +6,14 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.apkfuns.logutils.LogUtils;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.otb.designerassist.R;
 import com.otb.designerassist.mvp.model.entity.SentenceImageText;
+import com.otb.designerassist.util.StringUtil;
+import com.otb.designerassist.widget.ShowMaxImageView;
 
 import java.util.List;
 
@@ -20,9 +21,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * 笑话列表
+ * 图文
  */
-public class JokeListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class MeiTuwenAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private LayoutInflater mInflater;
 
@@ -32,11 +33,7 @@ public class JokeListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private View.OnClickListener onItemClick;
 
-    private View.OnLongClickListener onLongClickListener;
-
-    private int screenWidth;
-
-    public JokeListAdapter(Fragment context, List<SentenceImageText> datas, View.OnClickListener onItemClick) {
+    public MeiTuwenAdapter(Fragment context, List<SentenceImageText> datas, View.OnClickListener onItemClick) {
 
         this.mContext = context;
 
@@ -48,7 +45,6 @@ public class JokeListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         DisplayMetrics metric = new DisplayMetrics();
         context.getActivity().getWindowManager().getDefaultDisplay().getMetrics(metric);
-        screenWidth = metric.widthPixels;
     }
 
     @Override
@@ -68,16 +64,22 @@ public class JokeListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         if (sentenceImageText != null) {
 
-            LogUtils.e(sentenceImageText);
+//            LogUtils.e(sentenceImageText);
 
             Glide.with(mContext)
                     .load(sentenceImageText.getPic())
                     .asBitmap()
-                    .centerCrop()
+                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                     .into(viewHolder.imgView);
 
-            viewHolder.textTitle.setText(sentenceImageText.getText());
+            if (StringUtil.isEmpty(sentenceImageText.getDesc())) {
 
+                viewHolder.textDesc.setVisibility(View.GONE);
+            } else {
+
+                viewHolder.textDesc.setVisibility(View.VISIBLE);
+                viewHolder.textDesc.setText(sentenceImageText.getDesc());
+            }
         }
     }
 
@@ -90,10 +92,10 @@ public class JokeListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     class ViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.imgView)
-        public ImageView imgView;
+        public ShowMaxImageView imgView;
 
-        @BindView(R.id.textTitle)
-        public TextView textTitle;
+        @BindView(R.id.textDesc)
+        public TextView textDesc;
 
 
         public ViewHolder(View itemView) {

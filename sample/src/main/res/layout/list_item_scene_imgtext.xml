@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <ImageView
+    <com.otb.designerassist.widget.ShowMaxImageView
         android:id="@+id/imgView"
-        android:layout_width="150dp"
-        android:layout_height="150dp" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/jpzomu" />
 
     <TextView
-        android:id="@+id/textTitle"
-        android:layout_width="wrap_content"
+        android:id="@+id/textDesc"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="描述" />
+        android:padding="10dp"
+        android:text="描述"
+        android:textColor="#333333"
+        android:textSize="15sp" />
+
 </LinearLayout>

@@ -280,18 +280,18 @@ public class DocParseUtil {
                 if (bdshare != null) {
 
                     String data = bdshare.attr("data");
-//                    LogUtils.e(data);
+                    LogUtils.e(data);
 
                     try {
                         JSONObject jsonObject = new JSONObject(data);
 
-                        LogUtils.e(jsonObject.get("text") + "  " + jsonObject.get("desc") + "  " + jsonObject.get("url") + "  " + jsonObject.get("pic"));
+//                        LogUtils.e(jsonObject.get("text") + "  " + jsonObject.get("desc") + "  " + jsonObject.get("url") + "  " + jsonObject.get("pic"));
 
                         SentenceImageText sentenceImageText = new SentenceImageText();
                         sentenceImageText.setText("" + jsonObject.get("text"));
-                        sentenceImageText.setText("" + jsonObject.get("desc"));
-                        sentenceImageText.setText("" + jsonObject.get("url"));
-                        sentenceImageText.setText("" + jsonObject.get("pic"));
+                        sentenceImageText.setDesc("" + jsonObject.get("desc"));
+                        sentenceImageText.setUrl("" + jsonObject.get("url"));
+                        sentenceImageText.setPic("" + jsonObject.get("pic"));
 
                         sentenceImageTexts.add(sentenceImageText);
 
