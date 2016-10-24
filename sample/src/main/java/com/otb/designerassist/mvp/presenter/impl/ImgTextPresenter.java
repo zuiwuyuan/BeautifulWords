@@ -30,16 +30,16 @@ public class ImgTextPresenter implements IMeituPresenter, OnImgTextListener {
 
     @Override
     public void loadImgText(Context context, String page) {
-        iImgTextModel.loadMeiju(context,  page, this);
+        iImgTextModel.loadMeiju(context, page, this);
     }
 
     @Override
     public void onSuccess(List<SentenceImageText> sentenceImageTexts) {
-
+        iMeituMeijuView.onSuccess(sentenceImageTexts);
     }
 
     @Override
     public void onError(Throwable e) {
-
+        iMeituMeijuView.onError(e);
     }
 }

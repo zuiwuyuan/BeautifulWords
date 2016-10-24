@@ -1,0 +1,70 @@
+[
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_secondary_text_material_light.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\color\\abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_tint_edittext.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\color\\abc_tint_edittext.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_btn_colored_borderless_text_material.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\color\\abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_secondary_text_material_dark.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\color\\abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_tint_spinner.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\color\\abc_tint_spinner.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_primary_text_material_light.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\color\\abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_tint_default.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\color\\abc_tint_default.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_tint_btn_checkable.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\color\\abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\switch_thumb_material_light.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\color\\switch_thumb_material_light.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\color\\abc_primary_text_disable_only_material_light.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_tint_switch_thumb.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\color\\abc_tint_switch_thumb.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_search_url_text.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\color\\abc_search_url_text.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_primary_text_material_dark.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\color\\abc_primary_text_material_dark.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\switch_thumb_material_dark.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\color\\switch_thumb_material_dark.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_tint_switch_track.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\color\\abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_tint_seek_thumb.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\color\\abc_tint_seek_thumb.xml"
+    }
+]

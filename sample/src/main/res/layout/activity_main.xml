@@ -1,50 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <Button
+
+    <!--内容区域-->
+    <LinearLayout
+        android:id="@+id/bottom_nav_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+    <!--BottomNavigationBar-->
+    <com.ashokvarma.bottomnavigation.BottomNavigationBar
+        android:id="@+id/bottom_navigation_bar_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:onClick="onClick1"
-        android:text="句子迷-名人名句-列表" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:onClick="onClick2"
-        android:text="句子迷-原创句子" />
+        android:layout_gravity="bottom">
 
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:onClick="onClick3"
-        android:text="句子迷-精选句集-列表" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:onClick="onClick4"
-        android:text="句子迷-最新句集-列表" />
+    </com.ashokvarma.bottomnavigation.BottomNavigationBar>
 
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:onClick="onClick5"
-        android:text="句子迷-美图美句-列表" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:onClick="onClick6"
-        android:text="句子迷-手写美句-列表" />
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

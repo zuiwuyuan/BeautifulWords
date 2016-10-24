@@ -1,32 +1,37 @@
 package com.otb.designerassist.mvp.ui.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 
+import com.ashokvarma.bottomnavigation.BottomNavigationBar;
+import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.otb.designerassist.R;
-import com.otb.designerassist.mvp.presenter.impl.AlbumsPresenter;
-import com.otb.designerassist.mvp.presenter.impl.AllarticlePresenter;
-import com.otb.designerassist.mvp.presenter.impl.ImgTextPresenter;
-import com.otb.designerassist.mvp.presenter.impl.OrignalPresenter;
-import com.otb.designerassist.mvp.ui.view.IAlbumsView;
-import com.otb.designerassist.mvp.ui.view.IAllarticleView;
-import com.otb.designerassist.mvp.ui.view.IMeituMeijuView;
-import com.otb.designerassist.mvp.ui.view.IOrignalView;
+import com.otb.designerassist.mvp.ui.common.BaseActivity;
+import com.otb.designerassist.mvp.ui.fragment.FragmentAllArticle;
+import com.otb.designerassist.mvp.ui.fragment.FragmentMeiju;
+import com.otb.designerassist.mvp.ui.fragment.FragmentOriginal;
+import com.otb.designerassist.mvp.ui.fragment.FragmentJuji;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class MainActivity extends AppCompatActivity implements IAllarticleView, IOrignalView, IAlbumsView, IMeituMeijuView {
+public class MainActivity extends BaseActivity implements BottomNavigationBar.OnTabSelectedListener {
+
+    @BindView(R.id.bottom_navigation_bar_container)
+    public BottomNavigationBar bottom_navigation_bar_container;
+
+    private BottomNavigationItem meijulItem;
+    private BottomNavigationItem allArticleItem;
+    private BottomNavigationItem jujiItem;
+    private BottomNavigationItem originalItem;
 
 
-    private AllarticlePresenter allarticlePresenter;
-
-    private OrignalPresenter orignalPresenter;
-
-    private AlbumsPresenter albumsPresenter;
-
-    private ImgTextPresenter imgTextPresenter;
+    private FragmentMeiju fragmentMeiju;
+    private FragmentAllArticle fragmentAllArticle;
+    private FragmentOriginal fragmentOriginal;
+    private FragmentJuji fragmentJuji;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,123 +40,132 @@ public class MainActivity extends AppCompatActivity implements IAllarticleView, 
 
         ButterKnife.bind(this);
 
-        allarticlePresenter = new AllarticlePresenter(this);
-
-        orignalPresenter = new OrignalPresenter(this);
-
-        albumsPresenter = new AlbumsPresenter(this);
-
-        imgTextPresenter = new ImgTextPresenter(this);
+        initBottomNavBar();
     }
 
-    /**
-     * 名人名句-电影台词
-     * 名人名句-小说摘抄
-     * 名人名句-散文美句
-     * 名人名句-散文美句
-     * 名人名句-连续剧台词
-     * <p/>
-     * 这些个部分虽然请求的url不尽相同，但是数据解析的方式是一样的。
-     *
-     * @param view
-     */
-    public void onClick1(View view) {
 
-        String page = "0";
+    /*初始化底部导航栏*/
+    private void initBottomNavBar() {
 
-        // 名人名句-电影台词    @GET("jingdiantaici")
+        bottom_navigation_bar_container.setAutoHideEnabled(true);//自动隐藏
 
-        // 名人名句-小说摘抄    @GET("zhaichao")
+        bottom_navigation_bar_container.setMode(BottomNavigationBar.MODE_FIXED);
 
-        // 名人名句-散文美句    @GET("sanwen")
+        bottom_navigation_bar_container.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
 
-        // 名人名句-散文美句    @GET("dongmantaici")
 
-        // 名人名句-连续剧台词    @GET("guwen")
+        bottom_navigation_bar_container.setBarBackgroundColor(R.color.white); //背景颜色
+        bottom_navigation_bar_container.setInActiveColor(R.color.nav_gray); //未选中时的颜色
+        bottom_navigation_bar_container.setActiveColor(R.color.colorPrimaryDark);//选中时的颜色
 
-        allarticlePresenter.loadAllarticle(this, "jingdiantaici", page);
+
+        meijulItem = new BottomNavigationItem(R.drawable.notice, "灵感");
+        allArticleItem = new BottomNavigationItem(R.drawable.msg, "名句");
+        jujiItem = new BottomNavigationItem(R.drawable.task, "句集");
+        originalItem = new BottomNavigationItem(R.drawable.notice, "原创");
+
+
+        bottom_navigation_bar_container.addItem(meijulItem).addItem(allArticleItem).addItem(jujiItem).addItem(originalItem);
+        bottom_navigation_bar_container.initialise();
+        bottom_navigation_bar_container.setTabSelectedListener(this);
+
+        setDefaultFrag();
     }
 
-    /**
-     * 句子迷-名人名句-详情(句子合集-列表)
-     * 原创句子-最新原创的句子
-     * 原创句子-本周热门原创的句子
-     * 原创句子-推荐原创的句子
-     *
-     * @param view
-     */
-    public void onClick2(View view) {
-
-        String page = null;
-
-        // 原创句子-最新原创的句子 ju
-
-        // 原创句子-本周热门原创的句子  week
-
-        // 原创句子-推荐原创的句子 recommend
-
-        orignalPresenter.loadOriginal(this, "week", page);
+    private void setDefaultFrag() {
+        if (fragmentMeiju == null) {
+            fragmentMeiju = new FragmentMeiju();
+        }
+        addFrag(fragmentMeiju);
+        getSupportFragmentManager().beginTransaction().show(fragmentMeiju).commit();
     }
 
-    /**
-     * 精选句集
-     *
-     * @param view
-     */
-    public void onClick3(View view) {
+    /*添加Frag*/
+    private void addFrag(Fragment frag) {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
-        String page = null;
-
-        // 精选句集   "http://www.juzimi.com/albums?page=";
-        // 最新句集  http://www.juzimi.com/newalbums?page=";
-
-        albumsPresenter.loadAlbums(this, "albums", page);
+        if (frag != null && !frag.isAdded()) {
+            ft.add(R.id.bottom_nav_content, frag);
+        }
+        ft.commit();
     }
 
-    /**
-     * 最新句集
-     *
-     * @param view
-     */
-    public void onClick4(View view) {
-
-//        int page = 0;
-//        final String url = JuziApi.NEWALBUMS + page;
-//
-//        JuziUtil juziUtil = new JuziUtil();
-//        juziUtil.getJuziCollection(this, url);
-
-        String page = null;
-
-        albumsPresenter.loadAlbums(this, "newalbums", page);
+    /*隐藏所有fragment*/
+    private void hideAllFrag() {
+        hideFrag(fragmentMeiju);
+        hideFrag(fragmentAllArticle);
+        hideFrag(fragmentJuji);
+        hideFrag(fragmentOriginal);
     }
 
-    /**
-     * 美图美句
-     *
-     * @param view
-     */
-    public void onClick5(View view) {
-
-        // 美图美句   "http://www.juzimi.com/meitumeiju?page=";
-
-        String page = null;
-        imgTextPresenter.loadImgText(this, page);
+    /*隐藏frag*/
+    private void hideFrag(Fragment frag) {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        if (frag != null && frag.isAdded()) {
+            ft.hide(frag);
+        }
+        ft.commit();
     }
 
-    /**
-     * 美图美句
-     *
-     * @param view
-     */
-    public void onClick6(View view) {
+    /*底部NaV监听*/
+    @Override
+    public void onTabSelected(int position) {
+        hideAllFrag();//先隐藏所有frag
+        switch (position) {
 
-        // 手写美句   "http://www.juzimi.com/meitumeiju/shouxiemeiju?page=";
-        // 经典对白   "http://www.juzimi.com/meitumeiju/jingdianduibai?page=";
+            case 0:
+                if (fragmentMeiju == null) {
+                    fragmentMeiju = new FragmentMeiju();
 
-        String page = null;
-        String type = "shouxiemeiju";
-        imgTextPresenter.loadImgText(this, type, page);
+                }
+                addFrag(fragmentMeiju);
+                getSupportFragmentManager().beginTransaction().show(fragmentMeiju).commit();
+                getSupportActionBar().setTitle("美图美句");
+                break;
+
+            case 1:
+                if (fragmentAllArticle == null) {
+                    fragmentAllArticle = new FragmentAllArticle();
+                }
+                addFrag(fragmentAllArticle);
+                getSupportFragmentManager().beginTransaction().show(fragmentAllArticle).commit();
+
+                getSupportActionBar().setTitle("名人名句");
+
+                break;
+            case 2:
+                if (fragmentJuji == null) {
+
+                    fragmentJuji = new FragmentJuji();
+                }
+
+                addFrag(fragmentJuji);
+                getSupportFragmentManager().beginTransaction().show(fragmentJuji).commit();
+                getSupportActionBar().setTitle("原创句子");
+
+                break;
+            case 3:
+               /*公告Frag*/
+                if (fragmentOriginal == null) {
+                    fragmentOriginal = new FragmentOriginal();
+
+                }
+                addFrag(fragmentOriginal);
+                getSupportFragmentManager().beginTransaction().show(fragmentOriginal).commit();
+                getSupportActionBar().setTitle("精选句集");
+                break;
+        }
+
     }
 
+    @Override
+    public void onTabUnselected(int position) {
+
+
+    }
+
+    @Override
+    public void onTabReselected(int position) {
+
+    }
 }

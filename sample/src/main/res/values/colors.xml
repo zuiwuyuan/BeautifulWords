@@ -3,4 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!--底部导航栏图片灰色-->
+    <color name="nav_gray">#959595</color>
+    <!--白色-->
+    <color name="white">#FFFFFF</color>
+
 </resources>

@@ -1,0 +1,98 @@
+[
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\abc_popup_enter.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\anim\\abc_popup_enter.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\left_out.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\src\\main\\res\\anim\\left_out.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\hide_to_bottom.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\src\\main\\res\\anim\\hide_to_bottom.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\left_in.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\src\\main\\res\\anim\\left_in.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\abc_slide_out_top.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\anim\\abc_slide_out_top.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\right_out.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\src\\main\\res\\anim\\right_out.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\abc_slide_in_top.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\anim\\abc_slide_in_top.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\scale_in.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\src\\main\\res\\anim\\scale_in.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\show_from_bottom.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\src\\main\\res\\anim\\show_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\top_in.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\src\\main\\res\\anim\\top_in.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\top_out.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\src\\main\\res\\anim\\top_out.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\scale_out.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\src\\main\\res\\anim\\scale_out.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\abc_fade_in.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\anim\\abc_fade_in.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\right_in.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\src\\main\\res\\anim\\right_in.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\abc_popup_exit.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\anim\\abc_popup_exit.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\abc_fade_out.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\anim\\abc_fade_out.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\fade_out.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\src\\main\\res\\anim\\fade_out.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\abc_shrink_fade_out_from_bottom.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\abc_slide_in_bottom.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\anim\\abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\abc_grow_fade_in_from_bottom.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\bottom_out.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\src\\main\\res\\anim\\bottom_out.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\fade_in.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\src\\main\\res\\anim\\fade_in.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\abc_slide_out_bottom.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\anim\\abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\build\\intermediates\\res\\merged\\release\\anim\\bottom_in.xml",
+        "source": "D:\\workspace\\github\\BeautifulWords\\imagepicker\\src\\main\\res\\anim\\bottom_in.xml"
+    }
+]
