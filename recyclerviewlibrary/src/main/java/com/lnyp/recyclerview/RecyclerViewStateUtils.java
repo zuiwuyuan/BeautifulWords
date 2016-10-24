@@ -6,9 +6,9 @@ import android.view.View;
 
 /**
  * Created by cundong on 2015/11/9.
- * <p/>
+ * <p>
  * 分页展示数据时，RecyclerView的FooterView State 操作工具类
- * <p/>
+ * <p>
  * RecyclerView一共有几种State：Normal/Loading/Error/TheEnd
  */
 public class RecyclerViewStateUtils {
@@ -89,6 +89,9 @@ public class RecyclerViewStateUtils {
      * @param state
      */
     public static void setFooterViewState(RecyclerView recyclerView, RecyclerViewLoadingFooter.State state) {
+        if (recyclerView == null) {
+            return;
+        }
         RecyclerView.Adapter outerAdapter = recyclerView.getAdapter();
         if (outerAdapter != null && outerAdapter instanceof HeaderAndFooterRecyclerViewAdapter) {
             if (((HeaderAndFooterRecyclerViewAdapter) outerAdapter).getFooterViewsCount() > 0) {

@@ -25,15 +25,12 @@ import com.otb.designerassist.mvp.ui.view.IMeituMeijuView;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
 
     private static final String ARG_TYPE = "type";
 
-    @BindView(R.id.listJuzi)
     public RecyclerView listJuzi;
 
     private String type;
@@ -75,22 +72,26 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        LogUtils.e("view : " + view);
+
         if (view == null) {
+
             view = inflater.inflate(R.layout.fragment_meiju_list, container, false);
-
-            unbinder = ButterKnife.bind(this, view);
-
-            imgTextPresenter = new ImgTextPresenter(this);
 
             initView();
 
+            imgTextPresenter = new ImgTextPresenter(this);
+
             qryMeijus();
         }
+
 
         return view;
     }
 
     private void initView() {
+
+        listJuzi = (RecyclerView) view.findViewById(R.id.listJuzi);
 
         mDatas = new ArrayList<>();
 
@@ -126,7 +127,6 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
 
             if (mHasMore) {
                 RecyclerViewStateUtils.setFooterViewState(getActivity(), listJuzi, mHasMore, RecyclerViewLoadingFooter.State.Loading, null);
-                LogUtils.e("22222222222222222");
                 qryMeijus();
 
             } else {
@@ -139,9 +139,6 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
         @Override
         public void onClick(View v) {
             RecyclerViewStateUtils.setFooterViewState(getActivity(), listJuzi, mHasMore, RecyclerViewLoadingFooter.State.Loading, null);
-
-
-            LogUtils.e("11111111111111111111");
 
             qryMeijus();
         }
@@ -164,8 +161,6 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
 
         if (null != view) {
             ((ViewGroup) view.getParent()).removeView(view);
-
-            unbinder.unbind();
         }
     }
 
