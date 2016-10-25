@@ -3,6 +3,7 @@ package com.chenyuan.sentence.mvp.ui.fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -30,6 +31,8 @@ public class FragmentArticleList extends Fragment implements IAllarticleView {
 
     private static final String ARG_TYPE = "type";
 
+    public SwipeRefreshLayout layoutSwipeRefresh;
+
     public RecyclerView listJuzi;
 
     public RotateLoading rotateloading;
@@ -47,6 +50,8 @@ public class FragmentArticleList extends Fragment implements IAllarticleView {
     private String page;
 
     private boolean mHasMore = true;
+
+    private boolean isRefresh = true;
 
     public FragmentArticleList() {
     }
@@ -89,6 +94,7 @@ public class FragmentArticleList extends Fragment implements IAllarticleView {
 
     private void initView() {
 
+        layoutSwipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.layoutSwipeRefresh);
         rotateloading = (RotateLoading) view.findViewById(R.id.rotateloading);
         listJuzi = (RecyclerView) view.findViewById(R.id.listJuzi);
 
@@ -103,14 +109,25 @@ public class FragmentArticleList extends Fragment implements IAllarticleView {
         listJuzi.setLayoutManager(gridLayoutManager);
 
         GridSpacingItemDecoration itemDecoration = new GridSpacingItemDecoration.Builder(getActivity(), gridLayoutManager.getSpanCount())
-//                .setH_spacing(10)
-//                .setV_spacing(10)
                 .setDividerColor(Color.parseColor("#EFEFEF"))
                 .build();
         listJuzi.addItemDecoration(itemDecoration);
 
         listJuzi.addOnScrollListener(mOnScrollListener);
+
+        layoutSwipeRefresh.setColorSchemeColors(Color.parseColor("#3F51B5"));
+        layoutSwipeRefresh.setOnRefreshListener(onRefreshListener);
     }
+
+    SwipeRefreshLayout.OnRefreshListener onRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            page = null;
+            isRefresh = true;
+
+            qryMeijus();
+        }
+    };
 
     private EndlessRecyclerOnScrollListener mOnScrollListener = new EndlessRecyclerOnScrollListener() {
         @Override
@@ -167,18 +184,27 @@ public class FragmentArticleList extends Fragment implements IAllarticleView {
             page = "" + i_page;
         }
 
+        if (isRefresh) {
+            mDatas.clear();
+
+            isRefresh = false;
+        }
+
         if (sentenceSimples != null) {
             LogUtils.e("page : " + page + " size : " + sentenceSimples.size());
             mDatas.addAll(sentenceSimples);
             mAdapter.notifyDataSetChanged();
         }
 
+        layoutSwipeRefresh.setRefreshing(false);
         rotateloading.stop();
         RecyclerViewStateUtils.setFooterViewState(listJuzi, RecyclerViewLoadingFooter.State.Normal);
     }
 
     @Override
     public void onError(Throwable e) {
+        layoutSwipeRefresh.setRefreshing(false);
+        rotateloading.stop();
         RecyclerViewStateUtils.setFooterViewState(getActivity(), listJuzi, mHasMore, RecyclerViewLoadingFooter.State.NetWorkError, mFooterClick);
     }
 

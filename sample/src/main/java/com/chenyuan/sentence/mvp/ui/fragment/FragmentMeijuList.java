@@ -1,8 +1,10 @@
 package com.chenyuan.sentence.mvp.ui.fragment;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -11,16 +13,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.apkfuns.logutils.LogUtils;
-import com.lnyp.flexibledivider.HorizontalDividerItemDecoration;
-import com.lnyp.recyclerview.EndlessRecyclerOnScrollListener;
-import com.lnyp.recyclerview.HeaderAndFooterRecyclerViewAdapter;
-import com.lnyp.recyclerview.RecyclerViewLoadingFooter;
-import com.lnyp.recyclerview.RecyclerViewStateUtils;
 import com.chenyuan.sentence.R;
 import com.chenyuan.sentence.mvp.model.entity.SentenceImageText;
 import com.chenyuan.sentence.mvp.presenter.impl.ImgTextPresenter;
 import com.chenyuan.sentence.mvp.ui.adapter.MeiTuwenAdapter;
 import com.chenyuan.sentence.mvp.ui.view.IMeituMeijuView;
+import com.lnyp.flexibledivider.HorizontalDividerItemDecoration;
+import com.lnyp.recyclerview.EndlessRecyclerOnScrollListener;
+import com.lnyp.recyclerview.HeaderAndFooterRecyclerViewAdapter;
+import com.lnyp.recyclerview.RecyclerViewLoadingFooter;
+import com.lnyp.recyclerview.RecyclerViewStateUtils;
 import com.victor.loading.rotate.RotateLoading;
 
 import java.util.ArrayList;
@@ -29,6 +31,8 @@ import java.util.List;
 public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
 
     private static final String ARG_TYPE = "type";
+
+    public SwipeRefreshLayout layoutSwipeRefresh;
 
     public RecyclerView listJuzi;
 
@@ -47,6 +51,8 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
     private String page;
 
     private boolean mHasMore = true;
+
+    private boolean isRefresh = true;
 
     public FragmentMeijuList() {
     }
@@ -88,6 +94,7 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
 
     private void initView() {
 
+        layoutSwipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.layoutSwipeRefresh);
         rotateloading = (RotateLoading) view.findViewById(R.id.rotateloading);
         listJuzi = (RecyclerView) view.findViewById(R.id.listJuzi);
 
@@ -101,16 +108,24 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
         listJuzi.addItemDecoration(
                 new HorizontalDividerItemDecoration.Builder(getActivity())
                         .colorResId(R.color.divider_color)
-//                        .size(20)
                         .build());
 
         listJuzi.addOnScrollListener(mOnScrollListener);
 
-//        swipeRefreshLayout.setRefreshDrawable(new SmartisanDrawable(getActivity(), swipeRefreshLayout));
-//        swipeRefreshLayout.setBackgroundColor(Color.parseColor("#EFEFEF"));
-//        swipeRefreshLayout.setColor(Color.parseColor("#8F8F81"));
-
+        layoutSwipeRefresh.setColorSchemeColors(Color.parseColor("#3F51B5"));
+        layoutSwipeRefresh.setOnRefreshListener(onRefreshListener);
     }
+
+    SwipeRefreshLayout.OnRefreshListener onRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            page = null;
+            isRefresh = true;
+
+            qryMeijus();
+        }
+    };
+
 
     private EndlessRecyclerOnScrollListener mOnScrollListener = new EndlessRecyclerOnScrollListener() {
         @Override
@@ -144,8 +159,6 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
 
     private void qryMeijus() {
 
-        LogUtils.e("type : " + type);
-
         if (TextUtils.isEmpty(type)) {
             imgTextPresenter.loadImgText(getActivity(), page);
         } else {
@@ -173,18 +186,27 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
             page = "" + i_page;
         }
 
-        LogUtils.e("page : " + page);
+        if (isRefresh) {
+            mDatas.clear();
+
+            isRefresh = false;
+        }
+
         if (sentenceImageTexts != null) {
             mDatas.addAll(sentenceImageTexts);
             mAdapter.notifyDataSetChanged();
         }
+
         rotateloading.stop();
+        layoutSwipeRefresh.setRefreshing(false);
 
         RecyclerViewStateUtils.setFooterViewState(listJuzi, RecyclerViewLoadingFooter.State.Normal);
     }
 
     @Override
     public void onError(Throwable e) {
+        layoutSwipeRefresh.setRefreshing(false);
+        rotateloading.stop();
         RecyclerViewStateUtils.setFooterViewState(getActivity(), listJuzi, mHasMore, RecyclerViewLoadingFooter.State.NetWorkError, mFooterClick);
     }
 

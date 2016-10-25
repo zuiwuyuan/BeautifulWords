@@ -12,4 +12,6 @@
     <color name="activity_bg">#EFEFEF</color>
     <color name="divider_color">#EFEFEF</color>
 
+    <color name="refresh_color">#3F51B5</color>
+
 </resources>

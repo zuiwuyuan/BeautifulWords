@@ -1,24 +1,25 @@
 package com.chenyuan.sentence.mvp.ui.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.apkfuns.logutils.LogUtils;
-import com.lnyp.flexibledivider.HorizontalDividerItemDecoration;
-import com.lnyp.recyclerview.EndlessRecyclerOnScrollListener;
-import com.lnyp.recyclerview.HeaderAndFooterRecyclerViewAdapter;
-import com.lnyp.recyclerview.RecyclerViewLoadingFooter;
-import com.lnyp.recyclerview.RecyclerViewStateUtils;
 import com.chenyuan.sentence.R;
 import com.chenyuan.sentence.mvp.model.entity.SentenceCollection;
 import com.chenyuan.sentence.mvp.presenter.impl.AlbumsPresenter;
 import com.chenyuan.sentence.mvp.ui.adapter.JujiAdapter;
 import com.chenyuan.sentence.mvp.ui.view.IAlbumsView;
+import com.lnyp.flexibledivider.HorizontalDividerItemDecoration;
+import com.lnyp.recyclerview.EndlessRecyclerOnScrollListener;
+import com.lnyp.recyclerview.HeaderAndFooterRecyclerViewAdapter;
+import com.lnyp.recyclerview.RecyclerViewLoadingFooter;
+import com.lnyp.recyclerview.RecyclerViewStateUtils;
 import com.victor.loading.rotate.RotateLoading;
 
 import java.util.ArrayList;
@@ -27,6 +28,8 @@ import java.util.List;
 public class FragmentJujiList extends Fragment implements IAlbumsView {
 
     private static final String ARG_TYPE = "type";
+
+    public SwipeRefreshLayout layoutSwipeRefresh;
 
     public RecyclerView listJuzi;
 
@@ -45,6 +48,8 @@ public class FragmentJujiList extends Fragment implements IAlbumsView {
     private String page;
 
     private boolean mHasMore = true;
+
+    private boolean isRefresh = true;
 
     public FragmentJujiList() {
 
@@ -88,6 +93,7 @@ public class FragmentJujiList extends Fragment implements IAlbumsView {
 
     private void initView() {
 
+        layoutSwipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.layoutSwipeRefresh);
         rotateloading = (RotateLoading) view.findViewById(R.id.rotateloading);
         listJuzi = (RecyclerView) view.findViewById(R.id.listJuzi);
 
@@ -105,7 +111,21 @@ public class FragmentJujiList extends Fragment implements IAlbumsView {
                         .build());
 
         listJuzi.addOnScrollListener(mOnScrollListener);
+
+        layoutSwipeRefresh.setColorSchemeColors(Color.parseColor("#3F51B5"));
+        layoutSwipeRefresh.setOnRefreshListener(onRefreshListener);
     }
+
+    SwipeRefreshLayout.OnRefreshListener onRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            page = null;
+            isRefresh = true;
+
+            qryMeijus();
+        }
+    };
+
 
     private EndlessRecyclerOnScrollListener mOnScrollListener = new EndlessRecyclerOnScrollListener() {
         @Override
@@ -162,19 +182,27 @@ public class FragmentJujiList extends Fragment implements IAlbumsView {
             page = "" + i_page;
         }
 
+        if (isRefresh) {
+            mDatas.clear();
+
+            isRefresh = false;
+        }
+
         if (sentenceCollections != null) {
-            LogUtils.e("page : " + page + " size : " + sentenceCollections.size());
             mDatas.addAll(sentenceCollections);
             mAdapter.notifyDataSetChanged();
         }
 
         rotateloading.stop();
+        layoutSwipeRefresh.setRefreshing(false);
 
         RecyclerViewStateUtils.setFooterViewState(listJuzi, RecyclerViewLoadingFooter.State.Normal);
     }
 
     @Override
     public void onError(Throwable e) {
+        rotateloading.stop();
+        layoutSwipeRefresh.setRefreshing(false);
         RecyclerViewStateUtils.setFooterViewState(getActivity(), listJuzi, mHasMore, RecyclerViewLoadingFooter.State.NetWorkError, mFooterClick);
     }
 
