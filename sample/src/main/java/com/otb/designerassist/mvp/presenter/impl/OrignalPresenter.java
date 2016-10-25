@@ -30,11 +30,11 @@ public class OrignalPresenter implements IOrignalPresenter, OnOrinalListener {
 
     @Override
     public void onSuccess(List<SentenceDetail> sentenceDetails) {
-
+        iOrignalView.onSuccess(sentenceDetails);
     }
 
     @Override
     public void onError(Throwable e) {
-
+        iOrignalView.onError(e);
     }
 }

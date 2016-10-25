@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#e0e0e0"
-        app:tabIndicatorColor="#ef5350"
+        app:tabIndicatorColor="#1976d2"
         app:tabSelectedTextColor="#1976d2"
         app:tabTextColor="#90caf9" />
 

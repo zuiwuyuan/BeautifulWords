@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface OnAlbumsListener {
 
-    void onSuccess(List<SentenceCollection> sentenceImageTexts);
+    void onSuccess(List<SentenceCollection> sentenceCollections);
 
     void onError(Throwable e);
 

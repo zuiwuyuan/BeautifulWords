@@ -25,8 +25,8 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
 
     private FragmentMeiju fragmentMeiju;
     private FragmentAllArticle fragmentAllArticle;
-    private FragmentOriginal fragmentOriginal;
     private FragmentJuji fragmentJuji;
+    private FragmentOriginal fragmentOriginal;
 
     private Unbinder unbinder;
 
@@ -39,7 +39,6 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
 
         initBottomNavBar();
     }
-
 
     /*初始化底部导航栏*/
     private void initBottomNavBar() {
@@ -56,11 +55,10 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         bottom_navigation_bar_container.setActiveColor(R.color.colorPrimaryDark);//选中时的颜色
 
 
-        BottomNavigationItem meijulItem = new BottomNavigationItem(R.drawable.notice, "灵感");
-        BottomNavigationItem allArticleItem = new BottomNavigationItem(R.drawable.msg, "名句");
-        BottomNavigationItem jujiItem = new BottomNavigationItem(R.drawable.task, "句集");
-        BottomNavigationItem originalItem = new BottomNavigationItem(R.drawable.notice, "原创");
-
+        BottomNavigationItem meijulItem = new BottomNavigationItem(R.mipmap.icon_linggan, "灵感");
+        BottomNavigationItem allArticleItem = new BottomNavigationItem(R.mipmap.icon_jingdian, "经典");
+        BottomNavigationItem jujiItem = new BottomNavigationItem(R.mipmap.icon_juji, "句集");
+        BottomNavigationItem originalItem = new BottomNavigationItem(R.mipmap.icon_yuanchuang, "原创");
 
         bottom_navigation_bar_container.addItem(meijulItem).addItem(allArticleItem).addItem(jujiItem).addItem(originalItem);
         bottom_navigation_bar_container.initialise();
@@ -117,7 +115,6 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                 }
                 addFrag(fragmentMeiju);
                 getSupportFragmentManager().beginTransaction().show(fragmentMeiju).commit();
-                getSupportActionBar().setTitle("美图美句");
                 break;
 
             case 1:
@@ -126,8 +123,6 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                 }
                 addFrag(fragmentAllArticle);
                 getSupportFragmentManager().beginTransaction().show(fragmentAllArticle).commit();
-
-                getSupportActionBar().setTitle("名人名句");
 
                 break;
             case 2:
@@ -138,18 +133,15 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
 
                 addFrag(fragmentJuji);
                 getSupportFragmentManager().beginTransaction().show(fragmentJuji).commit();
-                getSupportActionBar().setTitle("原创句子");
 
                 break;
             case 3:
-               /*公告Frag*/
                 if (fragmentOriginal == null) {
                     fragmentOriginal = new FragmentOriginal();
 
                 }
                 addFrag(fragmentOriginal);
                 getSupportFragmentManager().beginTransaction().show(fragmentOriginal).commit();
-                getSupportActionBar().setTitle("精选句集");
                 break;
         }
 

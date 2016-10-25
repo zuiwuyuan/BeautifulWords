@@ -21,6 +21,7 @@ import com.otb.designerassist.mvp.model.entity.SentenceSimple;
 import com.otb.designerassist.mvp.presenter.impl.AllarticlePresenter;
 import com.otb.designerassist.mvp.ui.adapter.ArticleAdapter;
 import com.otb.designerassist.mvp.ui.view.IAllarticleView;
+import com.victor.loading.rotate.RotateLoading;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,8 @@ public class FragmentArticleList extends Fragment implements IAllarticleView {
     private static final String ARG_TYPE = "type";
 
     public RecyclerView listJuzi;
+
+    public RotateLoading rotateloading;
 
     private String type;
 
@@ -78,6 +81,7 @@ public class FragmentArticleList extends Fragment implements IAllarticleView {
 
         allarticlePresenter = new AllarticlePresenter(this);
 
+        rotateloading.start();
         qryMeijus();
 
         return view;
@@ -85,6 +89,7 @@ public class FragmentArticleList extends Fragment implements IAllarticleView {
 
     private void initView() {
 
+        rotateloading = (RotateLoading) view.findViewById(R.id.rotateloading);
         listJuzi = (RecyclerView) view.findViewById(R.id.listJuzi);
 
         mDatas = new ArrayList<>();
@@ -93,7 +98,7 @@ public class FragmentArticleList extends Fragment implements IAllarticleView {
         mAdapter = new HeaderAndFooterRecyclerViewAdapter(articleAdapter);
         listJuzi.setAdapter(mAdapter);
 
-       GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
         gridLayoutManager.setSpanSizeLookup(new HeaderSpanSizeLookup(listJuzi.getAdapter(), gridLayoutManager.getSpanCount()));
         listJuzi.setLayoutManager(gridLayoutManager);
 
@@ -167,6 +172,8 @@ public class FragmentArticleList extends Fragment implements IAllarticleView {
             mDatas.addAll(sentenceSimples);
             mAdapter.notifyDataSetChanged();
         }
+
+        rotateloading.stop();
         RecyclerViewStateUtils.setFooterViewState(listJuzi, RecyclerViewLoadingFooter.State.Normal);
     }
 

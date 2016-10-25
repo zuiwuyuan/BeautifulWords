@@ -1,11 +1,9 @@
 package com.otb.designerassist.mvp.ui.fragment;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,16 +15,16 @@ import com.lnyp.recyclerview.HeaderAndFooterRecyclerViewAdapter;
 import com.lnyp.recyclerview.RecyclerViewLoadingFooter;
 import com.lnyp.recyclerview.RecyclerViewStateUtils;
 import com.otb.designerassist.R;
-import com.otb.designerassist.mvp.model.entity.SentenceImageText;
-import com.otb.designerassist.mvp.presenter.impl.ImgTextPresenter;
-import com.otb.designerassist.mvp.ui.adapter.MeiTuwenAdapter;
-import com.otb.designerassist.mvp.ui.view.IMeituMeijuView;
+import com.otb.designerassist.mvp.model.entity.SentenceDetail;
+import com.otb.designerassist.mvp.presenter.impl.OrignalPresenter;
+import com.otb.designerassist.mvp.ui.adapter.OriginalAdapter;
+import com.otb.designerassist.mvp.ui.view.IOrignalView;
 import com.victor.loading.rotate.RotateLoading;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
+public class FragmentOriginalList extends Fragment implements IOrignalView {
 
     private static final String ARG_TYPE = "type";
 
@@ -36,11 +34,11 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
 
     private String type;
 
-    private ImgTextPresenter imgTextPresenter;
+    private OrignalPresenter orignalPresenter;
 
     private View view;
 
-    private List<SentenceImageText> mDatas;
+    private List<SentenceDetail> mDatas;
 
     private HeaderAndFooterRecyclerViewAdapter mAdapter;
 
@@ -48,14 +46,16 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
 
     private boolean mHasMore = true;
 
-    public FragmentMeijuList() {
+    public FragmentOriginalList() {
     }
 
-    public static FragmentMeijuList newInstance(String type) {
-        FragmentMeijuList fragment = new FragmentMeijuList();
+    public static FragmentOriginalList newInstance(String type) {
+
+        FragmentOriginalList fragment = new FragmentOriginalList();
         Bundle args = new Bundle();
         args.putString(ARG_TYPE, type);
         fragment.setArguments(args);
+
         return fragment;
     }
 
@@ -72,29 +72,29 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
                              Bundle savedInstanceState) {
 
         if (view == null) {
-
-            view = inflater.inflate(R.layout.fragment_meiju_list, container, false);
-
-            initView();
-
-            imgTextPresenter = new ImgTextPresenter(this);
-
-            rotateloading.start();
-            qryMeijus();
+            view = inflater.inflate(R.layout.fragment_original_list, container, false);
         }
+
+        initView();
+
+        orignalPresenter = new OrignalPresenter(this);
+
+        rotateloading.start();
+        qryMeijus();
 
         return view;
     }
 
     private void initView() {
 
+
         rotateloading = (RotateLoading) view.findViewById(R.id.rotateloading);
         listJuzi = (RecyclerView) view.findViewById(R.id.listJuzi);
 
         mDatas = new ArrayList<>();
 
-        MeiTuwenAdapter meiTuwenAdapter = new MeiTuwenAdapter(this, mDatas, onClickListener);
-        mAdapter = new HeaderAndFooterRecyclerViewAdapter(meiTuwenAdapter);
+        OriginalAdapter originalAdapter = new OriginalAdapter(this, mDatas, onClickListener);
+        mAdapter = new HeaderAndFooterRecyclerViewAdapter(originalAdapter);
         listJuzi.setAdapter(mAdapter);
 
         listJuzi.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -105,11 +105,6 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
                         .build());
 
         listJuzi.addOnScrollListener(mOnScrollListener);
-
-//        swipeRefreshLayout.setRefreshDrawable(new SmartisanDrawable(getActivity(), swipeRefreshLayout));
-//        swipeRefreshLayout.setBackgroundColor(Color.parseColor("#EFEFEF"));
-//        swipeRefreshLayout.setColor(Color.parseColor("#8F8F81"));
-
     }
 
     private EndlessRecyclerOnScrollListener mOnScrollListener = new EndlessRecyclerOnScrollListener() {
@@ -136,6 +131,7 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
     private View.OnClickListener mFooterClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+
             RecyclerViewStateUtils.setFooterViewState(getActivity(), listJuzi, mHasMore, RecyclerViewLoadingFooter.State.Loading, null);
 
             qryMeijus();
@@ -143,14 +139,7 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
     };
 
     private void qryMeijus() {
-
-        LogUtils.e("type : " + type);
-
-        if (TextUtils.isEmpty(type)) {
-            imgTextPresenter.loadImgText(getActivity(), page);
-        } else {
-            imgTextPresenter.loadImgText(getActivity(), type, page);
-        }
+        orignalPresenter.loadOriginal(getActivity(), type, page);
     }
 
     @Override
@@ -163,8 +152,7 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
     }
 
     @Override
-    public void onSuccess(List<SentenceImageText> sentenceImageTexts) {
-
+    public void onSuccess(List<SentenceDetail> sentenceDetails) {
         if (page == null) {
             page = "1";
         } else {
@@ -173,13 +161,13 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
             page = "" + i_page;
         }
 
-        LogUtils.e("page : " + page);
-        if (sentenceImageTexts != null) {
-            mDatas.addAll(sentenceImageTexts);
+        if (sentenceDetails != null) {
+            LogUtils.e("page : " + page + " size : " + sentenceDetails.size());
+            mDatas.addAll(sentenceDetails);
             mAdapter.notifyDataSetChanged();
         }
-        rotateloading.stop();
 
+        rotateloading.stop();
         RecyclerViewStateUtils.setFooterViewState(listJuzi, RecyclerViewLoadingFooter.State.Normal);
     }
 

@@ -24,13 +24,13 @@ public class AlbumsPresenter implements IAlbumsPresenter, OnAlbumsListener {
     }
 
     @Override
-    public void onSuccess(List<SentenceCollection> sentenceImageTexts) {
-
+    public void onSuccess(List<SentenceCollection> sentenceCollections) {
+        iAlbumsView.onSuccess(sentenceCollections);
     }
 
     @Override
     public void onError(Throwable e) {
-
+        iAlbumsView.onError(e);
     }
 
     @Override
