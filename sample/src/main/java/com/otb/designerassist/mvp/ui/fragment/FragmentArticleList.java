@@ -1,17 +1,19 @@
 package com.otb.designerassist.mvp.ui.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.apkfuns.logutils.LogUtils;
-import com.lnyp.flexibledivider.HorizontalDividerItemDecoration;
+import com.lnyp.flexibledivider.GridSpacingItemDecoration;
 import com.lnyp.recyclerview.EndlessRecyclerOnScrollListener;
 import com.lnyp.recyclerview.HeaderAndFooterRecyclerViewAdapter;
+import com.lnyp.recyclerview.HeaderSpanSizeLookup;
 import com.lnyp.recyclerview.RecyclerViewLoadingFooter;
 import com.lnyp.recyclerview.RecyclerViewStateUtils;
 import com.otb.designerassist.R;
@@ -47,10 +49,12 @@ public class FragmentArticleList extends Fragment implements IAllarticleView {
     }
 
     public static FragmentArticleList newInstance(String type) {
+
         FragmentArticleList fragment = new FragmentArticleList();
         Bundle args = new Bundle();
         args.putString(ARG_TYPE, type);
         fragment.setArguments(args);
+
         return fragment;
     }
 
@@ -67,15 +71,14 @@ public class FragmentArticleList extends Fragment implements IAllarticleView {
                              Bundle savedInstanceState) {
 
         if (view == null) {
-
             view = inflater.inflate(R.layout.fragment_article_list, container, false);
-
-            initView();
-
-            allarticlePresenter = new AllarticlePresenter(this);
-
-            qryMeijus();
         }
+
+        initView();
+
+        allarticlePresenter = new AllarticlePresenter(this);
+
+        qryMeijus();
 
         return view;
     }
@@ -90,27 +93,16 @@ public class FragmentArticleList extends Fragment implements IAllarticleView {
         mAdapter = new HeaderAndFooterRecyclerViewAdapter(articleAdapter);
         listJuzi.setAdapter(mAdapter);
 
-        listJuzi.setLayoutManager(new LinearLayoutManager(getActivity()));
-        listJuzi.addItemDecoration(
-                new HorizontalDividerItemDecoration.Builder(getActivity())
-                        .colorResId(R.color.divider_color)
-//                        .size(20)
-                        .build());
-
-        listJuzi.addOnScrollListener(mOnScrollListener);
-
-      /*  GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
+       GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
         gridLayoutManager.setSpanSizeLookup(new HeaderSpanSizeLookup(listJuzi.getAdapter(), gridLayoutManager.getSpanCount()));
         listJuzi.setLayoutManager(gridLayoutManager);
 
         GridSpacingItemDecoration itemDecoration = new GridSpacingItemDecoration.Builder(getActivity(), gridLayoutManager.getSpanCount())
-                .setH_spacing(50)
-                .setV_spacing(50)
-//                .setmDivider(mDivider)
-//                .setmDivider(colorDrawable)
+//                .setH_spacing(10)
+//                .setV_spacing(10)
                 .setDividerColor(Color.parseColor("#EFEFEF"))
                 .build();
-        listJuzi.addItemDecoration(itemDecoration);*/
+        listJuzi.addItemDecoration(itemDecoration);
 
         listJuzi.addOnScrollListener(mOnScrollListener);
     }

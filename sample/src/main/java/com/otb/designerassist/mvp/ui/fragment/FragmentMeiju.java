@@ -79,7 +79,7 @@ public class FragmentMeiju extends Fragment {
         tabLayout.addTab(tabLayout.newTab().setText(list_title.get(1)));
         tabLayout.addTab(tabLayout.newTab().setText(list_title.get(2)));
 
-        TitleTabAdapter titleTabAdapter = new TitleTabAdapter(getActivity().getSupportFragmentManager(), list_fragment, list_title);
+        TitleTabAdapter titleTabAdapter = new TitleTabAdapter(getChildFragmentManager(), list_fragment, list_title);
 
         //viewpager加载adapter
         viewPager.setAdapter(titleTabAdapter);

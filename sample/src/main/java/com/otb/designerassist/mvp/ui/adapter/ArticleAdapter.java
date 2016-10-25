@@ -5,15 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.apkfuns.logutils.LogUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.otb.designerassist.R;
 import com.otb.designerassist.mvp.model.entity.SentenceSimple;
-import com.otb.designerassist.util.StringUtil;
-import com.otb.designerassist.widget.ShowMaxImageView;
 
 import java.util.List;
 
@@ -59,25 +57,17 @@ public class ArticleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         SentenceSimple sentenceSimple = mDatas.get(position);
 
-        LogUtils.e(sentenceSimple);
-
-
         if (sentenceSimple != null) {
 
             Glide.with(mContext)
                     .load(sentenceSimple.getImgUrl())
                     .asBitmap()
+                    .centerCrop()
                     .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                     .into(viewHolder.imgView);
 
-            if (StringUtil.isEmpty(sentenceSimple.getContent())) {
+            viewHolder.textDesc.setText(sentenceSimple.getContent());
 
-                viewHolder.textDesc.setVisibility(View.GONE);
-            } else {
-
-                viewHolder.textDesc.setVisibility(View.VISIBLE);
-                viewHolder.textDesc.setText(sentenceSimple.getContent());
-            }
         }
     }
 
@@ -90,7 +80,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     class ViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.imgView)
-        public ShowMaxImageView imgView;
+        public ImageView imgView;
 
         @BindView(R.id.textDesc)
         public TextView textDesc;

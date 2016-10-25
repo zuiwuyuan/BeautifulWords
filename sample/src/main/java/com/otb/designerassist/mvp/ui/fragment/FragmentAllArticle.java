@@ -33,7 +33,7 @@ public class FragmentAllArticle extends Fragment {
 
     private static final String TYPE4 = "dongmantaici";
 
-//    private static final String TYPE5 = "guwen";
+    private static final String TYPE5 = "guwen";
 
 
     @BindView(R.id.tabLayout)
@@ -68,7 +68,7 @@ public class FragmentAllArticle extends Fragment {
         FragmentArticleList fragmentArticleList2 = FragmentArticleList.newInstance(TYPE2);
         FragmentArticleList fragmentArticleList3 = FragmentArticleList.newInstance(TYPE3);
         FragmentArticleList fragmentArticleList4 = FragmentArticleList.newInstance(TYPE4);
-//        FragmentArticleList fragmentArticleList5 = FragmentArticleList.newInstance(TYPE5);
+        FragmentArticleList fragmentArticleList5 = FragmentArticleList.newInstance(TYPE5);
 
         //将fragment装进列表中
         List<Fragment> list_fragment = new ArrayList<>();
@@ -76,7 +76,7 @@ public class FragmentAllArticle extends Fragment {
         list_fragment.add(fragmentArticleList2);
         list_fragment.add(fragmentArticleList3);
         list_fragment.add(fragmentArticleList4);
-//        list_fragment.add(fragmentArticleList5);
+        list_fragment.add(fragmentArticleList5);
 
         //将名称加载tab名字列表，正常情况下，我们应该在values/arrays.xml中进行定义然后调用
         List<String> list_title = new ArrayList<>();
@@ -84,7 +84,7 @@ public class FragmentAllArticle extends Fragment {
         list_title.add("小说摘抄");
         list_title.add("散文美句");
         list_title.add("动漫语录");
-//        list_title.add("古文名句");
+        list_title.add("古文名句");
 
         //设置TabLayout的模式
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
@@ -93,9 +93,9 @@ public class FragmentAllArticle extends Fragment {
         tabLayout.addTab(tabLayout.newTab().setText(list_title.get(1)));
         tabLayout.addTab(tabLayout.newTab().setText(list_title.get(2)));
         tabLayout.addTab(tabLayout.newTab().setText(list_title.get(3)));
-//        tabLayout.addTab(tabLayout.newTab().setText(list_title.get(4)));
+        tabLayout.addTab(tabLayout.newTab().setText(list_title.get(4)));
 
-        TitleTabAdapter titleTabAdapter = new TitleTabAdapter(getActivity().getSupportFragmentManager(), list_fragment, list_title);
+        TitleTabAdapter titleTabAdapter = new TitleTabAdapter(getChildFragmentManager(), list_fragment, list_title);
 
         //viewpager加载adapter
         viewPager.setAdapter(titleTabAdapter);
@@ -107,6 +107,6 @@ public class FragmentAllArticle extends Fragment {
 
         super.onDestroyView();
 
-//        unbinder.unbind();
+        unbinder.unbind();
     }
 }

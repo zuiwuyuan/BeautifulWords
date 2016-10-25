@@ -15,22 +15,22 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.otb.designerassist.widget.ShowMaxImageView
+        <ImageView
             android:id="@+id/imgView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="250dp"
             android:src="@drawable/jpzomu" />
 
         <TextView
             android:id="@+id/textDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:lineSpacingExtra="4dp"
-            android:lines="3"
-            android:padding="10dp"
+            android:lineSpacingExtra="2dp"
+            android:lines="4"
+            android:padding="4dp"
             android:text="描述"
             android:textColor="#333333"
-            android:textSize="15sp" />
+            android:textSize="12sp" />
 
     </LinearLayout>
 
