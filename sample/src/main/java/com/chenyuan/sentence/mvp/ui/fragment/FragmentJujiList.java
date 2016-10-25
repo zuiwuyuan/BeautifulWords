@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.apkfuns.logutils.LogUtils;
 import com.chenyuan.sentence.R;
 import com.chenyuan.sentence.mvp.model.entity.SentenceCollection;
 import com.chenyuan.sentence.mvp.presenter.impl.AlbumsPresenter;
@@ -209,7 +210,9 @@ public class FragmentJujiList extends Fragment implements IAlbumsView {
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-
+            int pos = (int) view.getTag();
+            SentenceCollection sentenceCollection = mDatas.get(pos);
+            LogUtils.e(sentenceCollection);
         }
     };
 }

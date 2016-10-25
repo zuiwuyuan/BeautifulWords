@@ -214,6 +214,9 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
         @Override
         public void onClick(View view) {
 
+            int pos = (int) view.getTag();
+            SentenceImageText sentenceImageText = mDatas.get(pos);
+            LogUtils.e(sentenceImageText);
         }
     };
 }

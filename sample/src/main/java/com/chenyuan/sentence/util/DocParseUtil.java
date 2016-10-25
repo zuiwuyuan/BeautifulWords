@@ -1,12 +1,11 @@
 package com.chenyuan.sentence.util;
 
-import com.apkfuns.logutils.LogUtils;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.chenyuan.sentence.mvp.model.entity.SentenceCollection;
 import com.chenyuan.sentence.mvp.model.entity.SentenceDetail;
 import com.chenyuan.sentence.mvp.model.entity.SentenceImageText;
 import com.chenyuan.sentence.mvp.model.entity.SentenceSimple;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -142,7 +141,7 @@ public class DocParseUtil {
 
                     sentenceDetails.add(sentenceDetail);
 
-                    LogUtils.e(sentenceDetail);
+//                    LogUtils.e(sentenceDetail);
                 }
             }
         }
@@ -252,7 +251,7 @@ public class DocParseUtil {
                     }
                 }
 
-                LogUtils.e(sentenceCollection);
+//                LogUtils.e(sentenceCollection);
                 sentenceCollections.add(sentenceCollection);
             }
         }
@@ -280,7 +279,7 @@ public class DocParseUtil {
                 if (bdshare != null) {
 
                     String data = bdshare.attr("data");
-                    LogUtils.e(data);
+//                    LogUtils.e(data);
 
                     try {
                         JSONObject jsonObject = new JSONObject(data);

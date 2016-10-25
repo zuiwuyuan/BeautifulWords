@@ -2,7 +2,6 @@ package com.chenyuan.sentence.mvp.model.impl;
 
 import android.content.Context;
 
-import com.apkfuns.logutils.LogUtils;
 import com.chenyuan.sentence.http.Api;
 import com.chenyuan.sentence.http.ServiceFactory;
 import com.chenyuan.sentence.http.service.AllarticleService;
@@ -51,16 +50,12 @@ public class OrignalModelImpl implements IOrignalModel {
 
                 String result = StringUtil.inToString(inputStream);
 
-//                System.out.println(result);
-
                 List<SentenceDetail> sentenceDetails = null;
                 try {
                     sentenceDetails = DocParseUtil.parseOrignal(result);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-                LogUtils.e("size： "+sentenceDetails.size());
 
                 mListener.onSuccess(sentenceDetails);
             }

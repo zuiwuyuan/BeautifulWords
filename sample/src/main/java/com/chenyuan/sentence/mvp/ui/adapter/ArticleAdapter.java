@@ -82,6 +82,9 @@ public class ArticleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
             viewHolder.textDesc.setText(sentenceSimple.getContent());
 
+            viewHolder.itemView.setTag(position);
+            viewHolder.itemView.setOnClickListener(onItemClick);
+
         }
     }
 

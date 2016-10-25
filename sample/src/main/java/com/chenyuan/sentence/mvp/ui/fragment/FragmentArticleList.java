@@ -11,17 +11,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.apkfuns.logutils.LogUtils;
+import com.chenyuan.sentence.R;
+import com.chenyuan.sentence.mvp.model.entity.SentenceSimple;
+import com.chenyuan.sentence.mvp.presenter.impl.AllarticlePresenter;
+import com.chenyuan.sentence.mvp.ui.adapter.ArticleAdapter;
+import com.chenyuan.sentence.mvp.ui.view.IAllarticleView;
 import com.lnyp.flexibledivider.GridSpacingItemDecoration;
 import com.lnyp.recyclerview.EndlessRecyclerOnScrollListener;
 import com.lnyp.recyclerview.HeaderAndFooterRecyclerViewAdapter;
 import com.lnyp.recyclerview.HeaderSpanSizeLookup;
 import com.lnyp.recyclerview.RecyclerViewLoadingFooter;
 import com.lnyp.recyclerview.RecyclerViewStateUtils;
-import com.chenyuan.sentence.R;
-import com.chenyuan.sentence.mvp.model.entity.SentenceSimple;
-import com.chenyuan.sentence.mvp.presenter.impl.AllarticlePresenter;
-import com.chenyuan.sentence.mvp.ui.adapter.ArticleAdapter;
-import com.chenyuan.sentence.mvp.ui.view.IAllarticleView;
 import com.victor.loading.rotate.RotateLoading;
 
 import java.util.ArrayList;
@@ -191,7 +191,6 @@ public class FragmentArticleList extends Fragment implements IAllarticleView {
         }
 
         if (sentenceSimples != null) {
-            LogUtils.e("page : " + page + " size : " + sentenceSimples.size());
             mDatas.addAll(sentenceSimples);
             mAdapter.notifyDataSetChanged();
         }
@@ -211,7 +210,9 @@ public class FragmentArticleList extends Fragment implements IAllarticleView {
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-
+            int pos = (int) view.getTag();
+            SentenceSimple sentenceSimple = mDatas.get(pos);
+            LogUtils.e(sentenceSimple);
         }
     };
 }

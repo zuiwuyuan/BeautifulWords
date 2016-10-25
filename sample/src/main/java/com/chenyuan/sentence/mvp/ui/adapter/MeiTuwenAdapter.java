@@ -80,6 +80,9 @@ public class MeiTuwenAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 viewHolder.textDesc.setVisibility(View.VISIBLE);
                 viewHolder.textDesc.setText(sentenceImageText.getDesc());
             }
+
+            viewHolder.itemView.setTag(position);
+            viewHolder.itemView.setOnClickListener(onItemClick);
         }
     }
 

@@ -69,6 +69,9 @@ public class JujiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             viewHolder.textTitle.setText(sentenceCollection.getTitle());
             viewHolder.textDesc.setText(sentenceCollection.getDesc());
+
+            viewHolder.itemView.setTag(position);
+            viewHolder.itemView.setOnClickListener(onItemClick);
         }
     }
 
