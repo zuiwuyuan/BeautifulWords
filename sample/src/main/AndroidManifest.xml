@@ -24,8 +24,6 @@
 
         <activity android:name=".mvp.ui.activity.MainActivity" />
 
-        <activity android:name=".mvp.ui.common.WebBrowseActivity" />
-
         <meta-data
             android:name="com.otb.designerassist.common.GlideConfiguration"
             android:value="GlideModule" />

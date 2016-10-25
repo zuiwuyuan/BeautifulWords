@@ -51,12 +51,12 @@ public class DocParseUtil {
 
                 if (views_field_tids != null && views_field_tids.size() > 0) {
                     Element views_field_tid = views_field_tids.get(0);
-                    if (views_field_tid != null && views_field_tid.select("img") != null) {
+                    if (views_field_tid != null && views_field_tid.select("img") != null && views_field_tid.select("img").size() > 0) {
                         String imgUrl = views_field_tid.select("img").get(0).attr("src");
                         sentenceSimple.setImgUrl(imgUrl);
                     }
 
-                    if (views_field_tid != null && views_field_tid.select("a") != null) {
+                    if (views_field_tid != null && views_field_tid.select("a") != null && views_field_tid.select("a").size() > 0) {
                         String detailUrl = "http://www.juzimi.com" + views_field_tid.select("a").get(0).attr("href");
                         sentenceSimple.setDetailUrl(detailUrl);
                     }
@@ -100,11 +100,11 @@ public class DocParseUtil {
                 sentenceSimples.add(sentenceSimple);
             }
 
-            System.out.println(sentenceSimples.size());
+//            System.out.println(sentenceSimples.size());
 
-            for (int i = 0; i < sentenceSimples.size(); i++) {
-                LogUtils.e(sentenceSimples.get(i));
-            }
+//            for (int i = 0; i < sentenceSimples.size(); i++) {
+//                LogUtils.e(sentenceSimples.get(i));
+//            }
 
         }
 

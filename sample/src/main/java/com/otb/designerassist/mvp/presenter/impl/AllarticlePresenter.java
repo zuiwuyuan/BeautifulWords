@@ -25,17 +25,16 @@ public class AllarticlePresenter implements IAllarticlePresenter, OnAllarticleLi
 
     @Override
     public void loadAllarticle(Context context, String type, String page) {
-
         iAllarticleModel.loadArticle(context, type, page, this);
     }
 
     @Override
     public void onSuccess(List<SentenceSimple> sentenceSimples) {
-
+        iAllarticleView.onSuccess(sentenceSimples);
     }
 
     @Override
     public void onError(Throwable e) {
-
+        iAllarticleView.onError(e);
     }
 }

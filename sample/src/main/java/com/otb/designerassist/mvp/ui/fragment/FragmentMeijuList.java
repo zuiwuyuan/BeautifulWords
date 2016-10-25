@@ -25,8 +25,6 @@ import com.otb.designerassist.mvp.ui.view.IMeituMeijuView;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Unbinder;
-
 public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
 
     private static final String ARG_TYPE = "type";
@@ -38,8 +36,6 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
     private ImgTextPresenter imgTextPresenter;
 
     private View view;
-
-    private Unbinder unbinder;
 
     private List<SentenceImageText> mDatas;
 
@@ -72,8 +68,6 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        LogUtils.e("view : " + view);
-
         if (view == null) {
 
             view = inflater.inflate(R.layout.fragment_meiju_list, container, false);
@@ -84,7 +78,6 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
 
             qryMeijus();
         }
-
 
         return view;
     }
@@ -103,7 +96,7 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
         listJuzi.addItemDecoration(
                 new HorizontalDividerItemDecoration.Builder(getActivity())
                         .colorResId(R.color.divider_color)
-                        .size(20)
+//                        .size(20)
                         .build());
 
         listJuzi.addOnScrollListener(mOnScrollListener);

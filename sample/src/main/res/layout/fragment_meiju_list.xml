@@ -1,12 +1,11 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.otb.designerassist.mvp.ui.fragment.FragmentMeijuList">
+    android:background="@color/activity_bg">
 
-   <android.support.v7.widget.RecyclerView
-       android:id="@+id/listJuzi"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/listJuzi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </FrameLayout>

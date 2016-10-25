@@ -15,6 +15,7 @@ import com.otb.designerassist.mvp.ui.fragment.FragmentJuji;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 
 public class MainActivity extends BaseActivity implements BottomNavigationBar.OnTabSelectedListener {
@@ -22,23 +23,19 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     @BindView(R.id.bottom_navigation_bar_container)
     public BottomNavigationBar bottom_navigation_bar_container;
 
-    private BottomNavigationItem meijulItem;
-    private BottomNavigationItem allArticleItem;
-    private BottomNavigationItem jujiItem;
-    private BottomNavigationItem originalItem;
-
-
     private FragmentMeiju fragmentMeiju;
     private FragmentAllArticle fragmentAllArticle;
     private FragmentOriginal fragmentOriginal;
     private FragmentJuji fragmentJuji;
+
+    private Unbinder unbinder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ButterKnife.bind(this);
+        unbinder = ButterKnife.bind(this);
 
         initBottomNavBar();
     }
@@ -59,10 +56,10 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         bottom_navigation_bar_container.setActiveColor(R.color.colorPrimaryDark);//选中时的颜色
 
 
-        meijulItem = new BottomNavigationItem(R.drawable.notice, "灵感");
-        allArticleItem = new BottomNavigationItem(R.drawable.msg, "名句");
-        jujiItem = new BottomNavigationItem(R.drawable.task, "句集");
-        originalItem = new BottomNavigationItem(R.drawable.notice, "原创");
+        BottomNavigationItem meijulItem = new BottomNavigationItem(R.drawable.notice, "灵感");
+        BottomNavigationItem allArticleItem = new BottomNavigationItem(R.drawable.msg, "名句");
+        BottomNavigationItem jujiItem = new BottomNavigationItem(R.drawable.task, "句集");
+        BottomNavigationItem originalItem = new BottomNavigationItem(R.drawable.notice, "原创");
 
 
         bottom_navigation_bar_container.addItem(meijulItem).addItem(allArticleItem).addItem(jujiItem).addItem(originalItem);
@@ -166,6 +163,13 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
 
     @Override
     public void onTabReselected(int position) {
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
 
     }
 }

@@ -1,53 +1,55 @@
 package com.otb.designerassist.mvp.ui.fragment;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.apkfuns.logutils.LogUtils;
+import com.lnyp.flexibledivider.HorizontalDividerItemDecoration;
+import com.lnyp.recyclerview.EndlessRecyclerOnScrollListener;
+import com.lnyp.recyclerview.HeaderAndFooterRecyclerViewAdapter;
+import com.lnyp.recyclerview.RecyclerViewLoadingFooter;
+import com.lnyp.recyclerview.RecyclerViewStateUtils;
 import com.otb.designerassist.R;
+import com.otb.designerassist.mvp.model.entity.SentenceSimple;
+import com.otb.designerassist.mvp.presenter.impl.AllarticlePresenter;
+import com.otb.designerassist.mvp.ui.adapter.ArticleAdapter;
+import com.otb.designerassist.mvp.ui.view.IAllarticleView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FragmentArticleList.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link FragmentArticleList#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class FragmentArticleList extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+import java.util.ArrayList;
+import java.util.List;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class FragmentArticleList extends Fragment implements IAllarticleView {
 
-    private OnFragmentInteractionListener mListener;
+    private static final String ARG_TYPE = "type";
+
+    public RecyclerView listJuzi;
+
+    private String type;
+
+    private AllarticlePresenter allarticlePresenter;
+
+    private View view;
+
+    private List<SentenceSimple> mDatas;
+
+    private HeaderAndFooterRecyclerViewAdapter mAdapter;
+
+    private String page;
+
+    private boolean mHasMore = true;
 
     public FragmentArticleList() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentArticleList.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FragmentArticleList newInstance(String param1, String param2) {
+    public static FragmentArticleList newInstance(String type) {
         FragmentArticleList fragment = new FragmentArticleList();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_TYPE, type);
         fragment.setArguments(args);
         return fragment;
     }
@@ -56,54 +58,135 @@ public class FragmentArticleList extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            type = getArguments().getString(ARG_TYPE);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_article_list, container, false);
+
+        if (view == null) {
+
+            view = inflater.inflate(R.layout.fragment_article_list, container, false);
+
+            initView();
+
+            allarticlePresenter = new AllarticlePresenter(this);
+
+            qryMeijus();
+        }
+
+        return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+    private void initView() {
+
+        listJuzi = (RecyclerView) view.findViewById(R.id.listJuzi);
+
+        mDatas = new ArrayList<>();
+
+        ArticleAdapter articleAdapter = new ArticleAdapter(this, mDatas, onClickListener);
+        mAdapter = new HeaderAndFooterRecyclerViewAdapter(articleAdapter);
+        listJuzi.setAdapter(mAdapter);
+
+        listJuzi.setLayoutManager(new LinearLayoutManager(getActivity()));
+        listJuzi.addItemDecoration(
+                new HorizontalDividerItemDecoration.Builder(getActivity())
+                        .colorResId(R.color.divider_color)
+//                        .size(20)
+                        .build());
+
+        listJuzi.addOnScrollListener(mOnScrollListener);
+
+      /*  GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
+        gridLayoutManager.setSpanSizeLookup(new HeaderSpanSizeLookup(listJuzi.getAdapter(), gridLayoutManager.getSpanCount()));
+        listJuzi.setLayoutManager(gridLayoutManager);
+
+        GridSpacingItemDecoration itemDecoration = new GridSpacingItemDecoration.Builder(getActivity(), gridLayoutManager.getSpanCount())
+                .setH_spacing(50)
+                .setV_spacing(50)
+//                .setmDivider(mDivider)
+//                .setmDivider(colorDrawable)
+                .setDividerColor(Color.parseColor("#EFEFEF"))
+                .build();
+        listJuzi.addItemDecoration(itemDecoration);*/
+
+        listJuzi.addOnScrollListener(mOnScrollListener);
+    }
+
+    private EndlessRecyclerOnScrollListener mOnScrollListener = new EndlessRecyclerOnScrollListener() {
+        @Override
+        public void onLoadNextPage(View view) {
+            super.onLoadNextPage(view);
+
+            RecyclerViewLoadingFooter.State state = RecyclerViewStateUtils.getFooterViewState(listJuzi);
+
+            if (state == RecyclerViewLoadingFooter.State.Loading) {
+                return;
+            }
+
+            if (mHasMore) {
+                RecyclerViewStateUtils.setFooterViewState(getActivity(), listJuzi, mHasMore, RecyclerViewLoadingFooter.State.Loading, null);
+                qryMeijus();
+
+            } else {
+                RecyclerViewStateUtils.setFooterViewState(getActivity(), listJuzi, mHasMore, RecyclerViewLoadingFooter.State.TheEnd, null);
+            }
         }
+    };
+
+    private View.OnClickListener mFooterClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            RecyclerViewStateUtils.setFooterViewState(getActivity(), listJuzi, mHasMore, RecyclerViewLoadingFooter.State.Loading, null);
+
+            qryMeijus();
+        }
+    };
+
+    private void qryMeijus() {
+        allarticlePresenter.loadAllarticle(getActivity(), type, page);
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        if (null != view) {
+            ((ViewGroup) view.getParent()).removeView(view);
+        }
+    }
+
+
+    @Override
+    public void onSuccess(List<SentenceSimple> sentenceSimples) {
+        if (page == null) {
+            page = "1";
         } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+            int i_page = Integer.parseInt(page);
+            i_page = i_page + 1;
+            page = "" + i_page;
         }
+
+        if (sentenceSimples != null) {
+            LogUtils.e("page : " + page + " size : " + sentenceSimples.size());
+            mDatas.addAll(sentenceSimples);
+            mAdapter.notifyDataSetChanged();
+        }
+        RecyclerViewStateUtils.setFooterViewState(listJuzi, RecyclerViewLoadingFooter.State.Normal);
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
+    public void onError(Throwable e) {
+        RecyclerViewStateUtils.setFooterViewState(getActivity(), listJuzi, mHasMore, RecyclerViewLoadingFooter.State.NetWorkError, mFooterClick);
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
+    View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+        }
+    };
 }
