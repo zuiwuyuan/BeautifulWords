@@ -2,6 +2,7 @@ package com.chenyuan.sentence.mvp.ui.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,8 @@ public class ArticleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private View.OnClickListener onItemClick;
 
+    private int itemHeight;
+
     public ArticleAdapter(Fragment context, List<SentenceSimple> datas, View.OnClickListener onItemClick) {
 
         this.mContext = context;
@@ -40,6 +43,11 @@ public class ArticleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         this.onItemClick = onItemClick;
 
         mInflater = LayoutInflater.from(context.getActivity());
+
+        DisplayMetrics dm = new DisplayMetrics();
+        context.getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+        itemHeight = dm.heightPixels * 2 / 5;
     }
 
     @Override
@@ -58,6 +66,12 @@ public class ArticleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         SentenceSimple sentenceSimple = mDatas.get(position);
 
         if (sentenceSimple != null) {
+
+            ViewGroup.LayoutParams lp = viewHolder.imgView.getLayoutParams();
+            lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
+            lp.height = itemHeight;
+
+            viewHolder.imgView.setLayoutParams(lp);
 
             Glide.with(mContext)
                     .load(sentenceSimple.getImgUrl())

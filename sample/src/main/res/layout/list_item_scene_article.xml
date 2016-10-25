@@ -18,18 +18,17 @@
         <ImageView
             android:id="@+id/imgView"
             android:layout_width="match_parent"
-            android:layout_height="250dp"/>
+            android:layout_height="260dp" />
 
         <TextView
             android:id="@+id/textDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:lineSpacingExtra="2dp"
-            android:lines="4"
             android:padding="4dp"
             android:text="描述"
             android:textColor="#333333"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 
     </LinearLayout>
 
