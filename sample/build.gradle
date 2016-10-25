@@ -7,7 +7,7 @@ android {
     buildToolsVersion "24.0.2"
 
     defaultConfig {
-        applicationId "com.otb.designerassist"
+        applicationId "com.chenyuan.sentence"
         minSdkVersion 14
         targetSdkVersion 24
         versionCode 1

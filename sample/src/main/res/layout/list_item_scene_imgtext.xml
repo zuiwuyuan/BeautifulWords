@@ -17,11 +17,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.otb.designerassist.widget.ShowMaxImageView
+        <com.chenyuan.sentence.widget.ShowMaxImageView
             android:id="@+id/imgView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/jpzomu" />
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/textDesc"
