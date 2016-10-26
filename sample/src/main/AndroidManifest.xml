@@ -7,35 +7,34 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="com.chenyuan.sentence.app.MyApp"
+        android:name=".app.MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name="com.chenyuan.sentence.mvp.ui.activity.SplashActivity"
-            android:theme="@style/SplashTheme"
-            >
+        <activity
+            android:name=".mvp.ui.activity.SplashActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name="com.chenyuan.sentence.mvp.ui.activity.MainActivity" />
+        <activity android:name=".mvp.ui.activity.MainActivity" />
 
         <meta-data
             android:name="com.chenyuan.sentence.common.GlideConfiguration"
             android:value="GlideModule" />
 
-        <receiver android:name="com.chenyuan.sentence.receiver.NetWorkReceiver">
+        <receiver android:name=".receiver.NetWorkReceiver">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
 
+        <activity android:name=".mvp.ui.activity.JujiDetailActivity"></activity>
     </application>
 
 </manifest>
