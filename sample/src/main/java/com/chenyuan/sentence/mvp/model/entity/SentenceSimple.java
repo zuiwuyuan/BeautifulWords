@@ -1,9 +1,11 @@
 package com.chenyuan.sentence.mvp.model.entity;
 
+import io.realm.RealmObject;
+
 /**
  * 句子列表
  */
-public class SentenceSimple {
+public class SentenceSimple extends RealmObject {
 
     private String title;
     private String content;
@@ -51,14 +53,4 @@ public class SentenceSimple {
         this.detailUrl = detailUrl;
     }
 
-    @Override
-    public String toString() {
-        return "SentenceSimple{" +
-                "title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", imgUrl='" + imgUrl + '\'' +
-                ", detailUrl='" + detailUrl + '\'' +
-                ", source_num='" + source_num + '\'' +
-                '}';
-    }
 }

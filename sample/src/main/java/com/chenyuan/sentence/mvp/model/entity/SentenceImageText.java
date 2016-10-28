@@ -1,9 +1,11 @@
 package com.chenyuan.sentence.mvp.model.entity;
 
+import io.realm.RealmObject;
+
 /**
  * 美图美文
  */
-public class SentenceImageText {
+public class SentenceImageText extends RealmObject{
 
 
     /**

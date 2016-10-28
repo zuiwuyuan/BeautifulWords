@@ -217,6 +217,21 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
             int pos = (int) view.getTag();
             SentenceImageText sentenceImageText = mDatas.get(pos);
             LogUtils.e(sentenceImageText);
+
+           /* Realm realm = Realm.getInstance(new RealmConfiguration.Builder(getActivity()).name("ningshuai.reaml").build());
+
+            realm.beginTransaction();
+
+            SentenceImageText sentenceImageText1 = realm.copyToRealm(sentenceImageText);
+
+            realm.commitTransaction();
+
+
+            Realm realm1 = Realm.getInstance(new RealmConfiguration.Builder(getActivity()).name("ningshuai.reaml").build());
+
+            RealmResults<SentenceImageText> realmResults = realm1.where(SentenceImageText.class).findAll();
+
+            LogUtils.e(realmResults.size());*/
         }
     };
 }
