@@ -9,9 +9,9 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.chenyuan.sentence.R;
 import com.chenyuan.sentence.mvp.ui.common.BaseActivity;
 import com.chenyuan.sentence.mvp.ui.fragment.FragmentAllArticle;
+import com.chenyuan.sentence.mvp.ui.fragment.FragmentJuji;
 import com.chenyuan.sentence.mvp.ui.fragment.FragmentMeiju;
 import com.chenyuan.sentence.mvp.ui.fragment.FragmentOriginal;
-import com.chenyuan.sentence.mvp.ui.fragment.FragmentJuji;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -61,6 +61,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         BottomNavigationItem originalItem = new BottomNavigationItem(R.mipmap.icon_yuanchuang, "原创");
 
         bottom_navigation_bar_container.addItem(meijulItem).addItem(allArticleItem).addItem(jujiItem).addItem(originalItem);
+        bottom_navigation_bar_container.setFirstSelectedPosition(0);
         bottom_navigation_bar_container.initialise();
         bottom_navigation_bar_container.setTabSelectedListener(this);
 
@@ -72,6 +73,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
             fragmentMeiju = new FragmentMeiju();
         }
         addFrag(fragmentMeiju);
+
         getSupportFragmentManager().beginTransaction().show(fragmentMeiju).commit();
     }
 
@@ -161,6 +163,6 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
+        unbinder.unbind();
     }
 }
