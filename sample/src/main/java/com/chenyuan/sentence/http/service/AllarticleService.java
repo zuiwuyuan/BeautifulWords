@@ -51,4 +51,8 @@ public interface AllarticleService {
     // 手写美句子
     @GET("{type}")
     Call<ResponseBody> loadMeiju(@Path("type") String type, @Query("page") String page);
+
+    // 句子详情
+    @GET
+    Call<ResponseBody> loadJuziDetail(@Url String url);
 }

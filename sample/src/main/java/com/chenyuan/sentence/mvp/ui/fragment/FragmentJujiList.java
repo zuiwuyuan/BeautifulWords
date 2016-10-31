@@ -14,6 +14,7 @@ import com.apkfuns.logutils.LogUtils;
 import com.chenyuan.sentence.R;
 import com.chenyuan.sentence.mvp.model.entity.SentenceCollection;
 import com.chenyuan.sentence.mvp.presenter.impl.AlbumsPresenter;
+import com.chenyuan.sentence.mvp.ui.activity.JujiDetailActivity;
 import com.chenyuan.sentence.mvp.ui.adapter.JujiAdapter;
 import com.chenyuan.sentence.mvp.ui.view.IAlbumsView;
 import com.lnyp.flexibledivider.HorizontalDividerItemDecoration;
@@ -213,6 +214,8 @@ public class FragmentJujiList extends Fragment implements IAlbumsView {
             int pos = (int) view.getTag();
             SentenceCollection sentenceCollection = mDatas.get(pos);
             LogUtils.e(sentenceCollection);
+
+            JujiDetailActivity.actionStart(getActivity(), sentenceCollection.getDetailUrl());
         }
     };
 }
