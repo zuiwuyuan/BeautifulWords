@@ -1,11 +1,9 @@
 package com.chenyuan.sentence.mvp.model.entity;
 
-import io.realm.RealmObject;
-
 /**
  * 句子列表
  */
-public class SentenceSimple extends RealmObject {
+public class SentenceSimple{
 
     private String title;
     private String content;
