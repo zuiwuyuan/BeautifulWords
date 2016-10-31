@@ -91,7 +91,6 @@ public class ShowMaxImageView extends ImageView {
     private Bitmap drawableToBitamp(Drawable drawable) {
 
         if (drawable != null) {
-            Log.e("drawable", drawable.toString());
             if (drawable instanceof GlideBitmapDrawable) {
                 GlideBitmapDrawable bd = (GlideBitmapDrawable) drawable;
                 return bd.getBitmap();

@@ -44,9 +44,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     private void initBottomNavBar() {
 
         bottom_navigation_bar_container.setAutoHideEnabled(true);//自动隐藏
-
         bottom_navigation_bar_container.setMode(BottomNavigationBar.MODE_FIXED);
-
         bottom_navigation_bar_container.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
 
 

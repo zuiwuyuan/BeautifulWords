@@ -5,6 +5,11 @@ import android.content.Context;
 
 import com.apkfuns.logutils.LogUtils;
 import com.chenyuan.sentence.common.CrashHandler;
+import com.chenyuan.sentence.common.RealmHelper;
+
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+import io.realm.rx.RealmObservableFactory;
 
 
 public class MyApp extends Application {
@@ -32,6 +37,18 @@ public class MyApp extends Application {
 
         LogUtils.configAllowLog = true;
         LogUtils.configTagPrefix = "lnyp-";
+
+        initRealm();
     }
 
+    private void initRealm() {
+
+        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder()
+                .name(RealmHelper.DB_NAME)
+                .schemaVersion(1)
+                .rxFactory(new RealmObservableFactory())
+                .deleteRealmIfMigrationNeeded()
+                .build();
+        Realm.setDefaultConfiguration(realmConfiguration);
+    }
 }
