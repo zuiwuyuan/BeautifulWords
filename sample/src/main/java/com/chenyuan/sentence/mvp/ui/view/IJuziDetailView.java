@@ -1,6 +1,6 @@
 package com.chenyuan.sentence.mvp.ui.view;
 
-import com.chenyuan.sentence.mvp.model.entity.SentenceDetail;
+import com.chenyuan.sentence.mvp.model.entity.SentenceImageText;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface IJuziDetailView {
 
-    void onSuccess(List<SentenceDetail> sentenceDetails);
+    void onSuccess(List<SentenceImageText> sentenceImageTexts);
 
     void onError(Throwable e);
 }

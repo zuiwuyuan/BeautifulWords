@@ -1,6 +1,6 @@
 package com.chenyuan.sentence.mvp.ui.adapter;
 
-import android.support.v4.app.Fragment;
+import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -27,13 +27,13 @@ public class MeiTuwenAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private LayoutInflater mInflater;
 
-    private Fragment mContext;
+    private Activity mContext;
 
     private List<SentenceImageText> mDatas;
 
     private View.OnClickListener onItemClick;
 
-    public MeiTuwenAdapter(Fragment context, List<SentenceImageText> datas, View.OnClickListener onItemClick) {
+    public MeiTuwenAdapter(Activity context, List<SentenceImageText> datas, View.OnClickListener onItemClick) {
 
         this.mContext = context;
 
@@ -41,10 +41,10 @@ public class MeiTuwenAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         this.onItemClick = onItemClick;
 
-        mInflater = LayoutInflater.from(context.getActivity());
+        mInflater = LayoutInflater.from(context);
 
         DisplayMetrics metric = new DisplayMetrics();
-        context.getActivity().getWindowManager().getDefaultDisplay().getMetrics(metric);
+        context.getWindowManager().getDefaultDisplay().getMetrics(metric);
     }
 
     @Override

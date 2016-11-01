@@ -303,4 +303,48 @@ public class DocParseUtil {
 
         return sentenceImageTexts;
     }
+
+
+    /**
+     * 句子的详情
+     *
+     * @param result
+     * @return
+     */
+    public static List<SentenceImageText> parseJuziDetail(String result) {
+
+        Document doc = Jsoup.parse(result);
+
+        Elements field_contents = doc.select("div.views-field-field-sns-value");
+
+        List<SentenceImageText> sentenceImageTexts = new ArrayList<>();
+
+        for (int i = 0; i < field_contents.size(); i++) {
+
+            Element field_content = field_contents.get(i);
+            if (field_content != null) {
+                Elements bdshares = field_content.select("div#bdshare");
+                if (bdshares != null && bdshares.size() > 0) {
+                    String data = bdshares.first().attr("data");
+                    try {
+                        JSONObject jsonObject = new JSONObject(data);
+
+                        SentenceImageText sentenceImageText = new SentenceImageText();
+                        sentenceImageText.setText("" + jsonObject.get("text"));
+                        sentenceImageText.setDesc("" + jsonObject.get("desc"));
+                        sentenceImageText.setUrl("" + jsonObject.get("url"));
+                        sentenceImageText.setPic("" + jsonObject.get("pic"));
+
+                        sentenceImageTexts.add(sentenceImageText);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+        return sentenceImageTexts;
+
+    }
 }

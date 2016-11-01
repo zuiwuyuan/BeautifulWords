@@ -3,7 +3,7 @@ package com.chenyuan.sentence.mvp.presenter.impl;
 import android.content.Context;
 
 import com.chenyuan.sentence.mvp.model.IJuziDetailModel;
-import com.chenyuan.sentence.mvp.model.entity.SentenceDetail;
+import com.chenyuan.sentence.mvp.model.entity.SentenceImageText;
 import com.chenyuan.sentence.mvp.model.impl.JuziDetailModelImpl;
 import com.chenyuan.sentence.mvp.presenter.IJuziDetailPresenter;
 import com.chenyuan.sentence.mvp.presenter.callback.OnJuziDetailListener;
@@ -24,8 +24,8 @@ public class JuziDetailPresenter implements IJuziDetailPresenter, OnJuziDetailLi
     }
 
     @Override
-    public void onSuccess(List<SentenceDetail> sentenceDetails) {
-        mIJuziDetailView.onSuccess(sentenceDetails);
+    public void onSuccess(List<SentenceImageText> sentenceImageTexts) {
+        mIJuziDetailView.onSuccess(sentenceImageTexts);
     }
 
     @Override

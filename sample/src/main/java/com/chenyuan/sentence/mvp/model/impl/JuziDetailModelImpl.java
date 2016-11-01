@@ -6,7 +6,7 @@ import com.chenyuan.sentence.http.Api;
 import com.chenyuan.sentence.http.ServiceFactory;
 import com.chenyuan.sentence.http.service.AllarticleService;
 import com.chenyuan.sentence.mvp.model.IJuziDetailModel;
-import com.chenyuan.sentence.mvp.model.entity.SentenceDetail;
+import com.chenyuan.sentence.mvp.model.entity.SentenceImageText;
 import com.chenyuan.sentence.mvp.presenter.callback.OnJuziDetailListener;
 import com.chenyuan.sentence.util.DocParseUtil;
 import com.chenyuan.sentence.util.StringUtil;
@@ -50,9 +50,10 @@ public class JuziDetailModelImpl implements IJuziDetailModel {
                 String result = StringUtil.inToString(inputStream);
                 System.out.println(result);
 
-                List<SentenceDetail> sentenceDetails = null;
+                List<SentenceImageText> sentenceDetails = null;
                 try {
-                    sentenceDetails = DocParseUtil.parseOrignal(result);
+                    sentenceDetails = DocParseUtil.parseJuziDetail(result);
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
