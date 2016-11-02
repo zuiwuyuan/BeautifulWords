@@ -14,6 +14,7 @@ import com.apkfuns.logutils.LogUtils;
 import com.chenyuan.sentence.R;
 import com.chenyuan.sentence.mvp.model.entity.SentenceSimple;
 import com.chenyuan.sentence.mvp.presenter.impl.AllarticlePresenter;
+import com.chenyuan.sentence.mvp.ui.activity.JujiDetailActivity;
 import com.chenyuan.sentence.mvp.ui.adapter.ArticleAdapter;
 import com.chenyuan.sentence.mvp.ui.view.IAllarticleView;
 import com.lnyp.flexibledivider.GridSpacingItemDecoration;
@@ -213,6 +214,7 @@ public class FragmentArticleList extends Fragment implements IAllarticleView {
             int pos = (int) view.getTag();
             SentenceSimple sentenceSimple = mDatas.get(pos);
             LogUtils.e(sentenceSimple);
+            JujiDetailActivity.actionStart(getActivity(), sentenceSimple.getDetailUrl());
         }
     };
 }

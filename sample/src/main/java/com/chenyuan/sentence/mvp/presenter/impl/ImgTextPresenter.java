@@ -3,13 +3,11 @@ package com.chenyuan.sentence.mvp.presenter.impl;
 import android.content.Context;
 
 import com.chenyuan.sentence.mvp.model.IImgTextModel;
-import com.chenyuan.sentence.mvp.model.entity.SentenceImageText;
+import com.chenyuan.sentence.mvp.model.entity.SceneListDetail;
 import com.chenyuan.sentence.mvp.model.impl.ImgTextModelImpl;
 import com.chenyuan.sentence.mvp.presenter.IMeituPresenter;
 import com.chenyuan.sentence.mvp.presenter.callback.OnImgTextListener;
 import com.chenyuan.sentence.mvp.ui.view.IMeituMeijuView;
-
-import java.util.List;
 
 
 public class ImgTextPresenter implements IMeituPresenter, OnImgTextListener {
@@ -34,8 +32,8 @@ public class ImgTextPresenter implements IMeituPresenter, OnImgTextListener {
     }
 
     @Override
-    public void onSuccess(List<SentenceImageText> sentenceImageTexts) {
-        iMeituMeijuView.onSuccess(sentenceImageTexts);
+    public void onSuccess(SceneListDetail sceneListDetail) {
+        iMeituMeijuView.onSuccess(sceneListDetail);
     }
 
     @Override

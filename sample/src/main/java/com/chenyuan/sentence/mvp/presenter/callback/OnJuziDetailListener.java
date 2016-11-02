@@ -1,12 +1,10 @@
 package com.chenyuan.sentence.mvp.presenter.callback;
 
-import com.chenyuan.sentence.mvp.model.entity.SentenceImageText;
-
-import java.util.List;
+import com.chenyuan.sentence.mvp.model.entity.SceneListDetail;
 
 public interface OnJuziDetailListener {
 
-    void onSuccess(List<SentenceImageText> sentenceImageTexts);
+    void onSuccess(SceneListDetail sceneListDetail);
 
     void onError(Throwable e);
 

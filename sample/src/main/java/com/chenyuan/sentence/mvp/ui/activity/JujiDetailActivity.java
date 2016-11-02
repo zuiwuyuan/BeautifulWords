@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.apkfuns.logutils.LogUtils;
 import com.chenyuan.sentence.R;
+import com.chenyuan.sentence.mvp.model.entity.SceneListDetail;
 import com.chenyuan.sentence.mvp.model.entity.SentenceImageText;
 import com.chenyuan.sentence.mvp.presenter.impl.ImgTextPresenter;
 import com.chenyuan.sentence.mvp.presenter.impl.JuziDetailPresenter;
@@ -157,7 +158,9 @@ public class JujiDetailActivity extends AppCompatActivity implements IJuziDetail
     }
 
     @Override
-    public void onSuccess(List<SentenceImageText> sentenceImageTexts) {
+    public void onSuccess(SceneListDetail sceneListDetail) {
+
+        List<SentenceImageText> sentenceImageTexts = sceneListDetail.mImageTexts;
 
         if (page == null) {
             page = "1";
@@ -165,6 +168,10 @@ public class JujiDetailActivity extends AppCompatActivity implements IJuziDetail
             int i_page = Integer.parseInt(page);
             i_page = i_page + 1;
             page = "" + i_page;
+        }
+
+        if (page.equals(sceneListDetail.page)) {
+            mHasMore = false;
         }
 
         if (isRefresh) {

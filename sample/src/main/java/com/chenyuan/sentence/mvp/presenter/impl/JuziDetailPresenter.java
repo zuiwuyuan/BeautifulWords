@@ -3,13 +3,11 @@ package com.chenyuan.sentence.mvp.presenter.impl;
 import android.content.Context;
 
 import com.chenyuan.sentence.mvp.model.IJuziDetailModel;
-import com.chenyuan.sentence.mvp.model.entity.SentenceImageText;
+import com.chenyuan.sentence.mvp.model.entity.SceneListDetail;
 import com.chenyuan.sentence.mvp.model.impl.JuziDetailModelImpl;
 import com.chenyuan.sentence.mvp.presenter.IJuziDetailPresenter;
 import com.chenyuan.sentence.mvp.presenter.callback.OnJuziDetailListener;
 import com.chenyuan.sentence.mvp.ui.view.IJuziDetailView;
-
-import java.util.List;
 
 
 public class JuziDetailPresenter implements IJuziDetailPresenter, OnJuziDetailListener {
@@ -24,8 +22,8 @@ public class JuziDetailPresenter implements IJuziDetailPresenter, OnJuziDetailLi
     }
 
     @Override
-    public void onSuccess(List<SentenceImageText> sentenceImageTexts) {
-        mIJuziDetailView.onSuccess(sentenceImageTexts);
+    public void onSuccess(SceneListDetail sceneListDetail) {
+        mIJuziDetailView.onSuccess(sceneListDetail);
     }
 
     @Override

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.apkfuns.logutils.LogUtils;
 import com.chenyuan.sentence.R;
+import com.chenyuan.sentence.mvp.model.entity.SceneListDetail;
 import com.chenyuan.sentence.mvp.model.entity.SentenceImageText;
 import com.chenyuan.sentence.mvp.presenter.impl.ImgTextPresenter;
 import com.chenyuan.sentence.mvp.ui.adapter.MeiTuwenAdapter;
@@ -176,7 +177,9 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
     }
 
     @Override
-    public void onSuccess(List<SentenceImageText> sentenceImageTexts) {
+    public void onSuccess(SceneListDetail sceneListDetail) {
+
+        List<SentenceImageText> sentenceImageTexts = sceneListDetail.mImageTexts;
 
         if (page == null) {
             page = "1";
@@ -185,6 +188,13 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
             i_page = i_page + 1;
             page = "" + i_page;
         }
+
+        if (page.equals(sceneListDetail.page)) {
+            mHasMore = false;
+        }
+
+        LogUtils.e("mHasMore : "+mHasMore);
+
 
         if (isRefresh) {
             mDatas.clear();

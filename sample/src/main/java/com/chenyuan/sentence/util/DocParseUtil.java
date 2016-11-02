@@ -1,5 +1,6 @@
 package com.chenyuan.sentence.util;
 
+import com.chenyuan.sentence.mvp.model.entity.SceneListDetail;
 import com.chenyuan.sentence.mvp.model.entity.SentenceCollection;
 import com.chenyuan.sentence.mvp.model.entity.SentenceDetail;
 import com.chenyuan.sentence.mvp.model.entity.SentenceImageText;
@@ -259,9 +260,26 @@ public class DocParseUtil {
         return sentenceCollections;
     }
 
-    public static List<SentenceImageText> parseMeiju(String result) {
+    public static SceneListDetail parseMeiju(String result) {
 
         Document doc = Jsoup.parse(result);
+
+        SceneListDetail sceneListDetail = new SceneListDetail();
+
+        // 得到page
+        Elements pageLasts = doc.getElementsByClass("pager-last");
+        if (pageLasts != null && pageLasts.size() > 0) {
+            String page = pageLasts.first().text();
+            sceneListDetail.page = page;
+        } else {
+            Elements pageItems = doc.getElementsByClass("pager-item");
+            if (pageItems != null && pageItems.last() != null) {
+                String page = pageItems.last().text();
+                sceneListDetail.page = page;
+            } else {
+                sceneListDetail.page = null;
+            }
+        }
 
         List<SentenceImageText> sentenceImageTexts = new ArrayList<>();
 
@@ -300,8 +318,8 @@ public class DocParseUtil {
                 }
             }
         }
-
-        return sentenceImageTexts;
+        sceneListDetail.mImageTexts = sentenceImageTexts;
+        return sceneListDetail;
     }
 
 
@@ -311,9 +329,26 @@ public class DocParseUtil {
      * @param result
      * @return
      */
-    public static List<SentenceImageText> parseJuziDetail(String result) {
+    public static SceneListDetail parseJuziDetail(String result) {
+
+        SceneListDetail sceneListDetail = new SceneListDetail();
 
         Document doc = Jsoup.parse(result);
+
+        // 得到page
+        Elements pageLasts = doc.getElementsByClass("pager-last");
+        if (pageLasts != null && pageLasts.size() > 0) {
+            String page = pageLasts.first().text();
+            sceneListDetail.page = page;
+        } else {
+            Elements pageItems = doc.getElementsByClass("pager-item");
+            if (pageItems != null && pageItems.last() != null) {
+                String page = pageItems.last().text();
+                sceneListDetail.page = page;
+            } else {
+                sceneListDetail.page = null;
+            }
+        }
 
         Elements field_contents = doc.select("div.views-field-field-sns-value");
 
@@ -344,7 +379,9 @@ public class DocParseUtil {
             }
         }
 
-        return sentenceImageTexts;
+        sceneListDetail.mImageTexts = sentenceImageTexts;
+
+        return sceneListDetail;
 
     }
 }

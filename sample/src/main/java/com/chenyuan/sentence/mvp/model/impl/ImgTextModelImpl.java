@@ -8,13 +8,12 @@ import com.chenyuan.sentence.http.Api;
 import com.chenyuan.sentence.http.ServiceFactory;
 import com.chenyuan.sentence.http.service.AllarticleService;
 import com.chenyuan.sentence.mvp.model.IImgTextModel;
-import com.chenyuan.sentence.mvp.model.entity.SentenceImageText;
+import com.chenyuan.sentence.mvp.model.entity.SceneListDetail;
 import com.chenyuan.sentence.mvp.presenter.callback.OnImgTextListener;
 import com.chenyuan.sentence.util.DocParseUtil;
 import com.chenyuan.sentence.util.StringUtil;
 
 import java.io.InputStream;
-import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -79,11 +78,9 @@ public class ImgTextModelImpl implements IImgTextModel {
 
                 String result = StringUtil.inToString(inputStream);
 
-//                System.out.println(result);
+                SceneListDetail sceneListDetail = DocParseUtil.parseMeiju(result);
 
-                List<SentenceImageText> sentenceImageTexts = DocParseUtil.parseMeiju(result);
-
-                mListener.onSuccess(sentenceImageTexts);
+                mListener.onSuccess(sceneListDetail);
             }
 
             @Override

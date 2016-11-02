@@ -69,8 +69,8 @@ public class FragmentMeiju extends Fragment {
         //将名称加载tab名字列表，正常情况下，我们应该在values/arrays.xml中进行定义然后调用
         List<String> list_title = new ArrayList<>();
         list_title.add("美图美句");
-        list_title.add("原创句子");
         list_title.add("手写句子");
+        list_title.add("经典对白");
 
         //设置TabLayout的模式
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
