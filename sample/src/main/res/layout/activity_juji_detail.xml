@@ -12,7 +12,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/listJuzi"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"/>
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
@@ -22,8 +22,8 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        app:loading_color="#8F8F81"
+        app:loading_color="@color/loading_color"
         app:loading_speed="6"
-        app:loading_width="3dp" />
+        app:loading_width="3dp"/>
 
 </FrameLayout>
