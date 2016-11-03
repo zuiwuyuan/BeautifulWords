@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import com.apkfuns.logutils.LogUtils;
 import com.chenyuan.sentence.http.Api;
 import com.chenyuan.sentence.http.ServiceFactory;
-import com.chenyuan.sentence.http.service.AllarticleService;
+import com.chenyuan.sentence.http.service.SentenceService;
 import com.chenyuan.sentence.mvp.model.IImgTextModel;
 import com.chenyuan.sentence.mvp.model.entity.SceneListDetail;
 import com.chenyuan.sentence.mvp.presenter.callback.OnImgTextListener;
@@ -22,7 +22,7 @@ import retrofit2.Response;
 
 public class ImgTextModelImpl implements IImgTextModel {
 
-    private AllarticleService allarticleService;
+    private SentenceService mSentenceService;
 
     private OnImgTextListener mListener;
 
@@ -34,7 +34,7 @@ public class ImgTextModelImpl implements IImgTextModel {
         this.mContext = context;
         this.mListener = listener;
 
-        this.allarticleService = ServiceFactory.getInstance().createService(AllarticleService.class, Api.BASE_URL_MEITUMEIJU);
+        this.mSentenceService = ServiceFactory.getInstance().createService(SentenceService.class, Api.BASE_URL_MEITUMEIJU);
 
         loadMeiju(isFirst, type, page);
 
@@ -46,7 +46,7 @@ public class ImgTextModelImpl implements IImgTextModel {
         this.mContext = context;
         this.mListener = listener;
 
-        this.allarticleService = ServiceFactory.getInstance().createService(AllarticleService.class, Api.BASE_URL_MEITUMEIJU);
+        this.mSentenceService = ServiceFactory.getInstance().createService(SentenceService.class, Api.BASE_URL_MEITUMEIJU);
 
         loadMeiju(isFirst, null, page);
     }
@@ -63,10 +63,10 @@ public class ImgTextModelImpl implements IImgTextModel {
                 url = url + "?page=" + page;
             }
 
-            call = allarticleService.loadMeiju(url);
+            call = mSentenceService.loadMeiju(url);
         } else {
 
-            call = allarticleService.loadMeiju(type, page);
+            call = mSentenceService.loadMeiju(type, page);
         }
 
 

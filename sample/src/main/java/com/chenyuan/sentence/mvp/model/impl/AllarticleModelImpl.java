@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.chenyuan.sentence.http.Api;
 import com.chenyuan.sentence.http.ServiceFactory;
-import com.chenyuan.sentence.http.service.AllarticleService;
+import com.chenyuan.sentence.http.service.SentenceService;
 import com.chenyuan.sentence.mvp.model.IAllarticleModel;
 import com.chenyuan.sentence.mvp.model.entity.SentenceSimple;
 import com.chenyuan.sentence.mvp.presenter.callback.OnAllarticleListener;
@@ -21,7 +21,7 @@ import retrofit2.Response;
 
 public class AllarticleModelImpl implements IAllarticleModel {
 
-    private AllarticleService allarticleService;
+    private SentenceService mSentenceService;
 
     private OnAllarticleListener mListener;
 
@@ -33,14 +33,14 @@ public class AllarticleModelImpl implements IAllarticleModel {
         this.mContext = context;
         this.mListener = listener;
 
-        this.allarticleService = ServiceFactory.getInstance().createService(AllarticleService.class, Api.BASE_URL_ALLARTICLE);
+        this.mSentenceService = ServiceFactory.getInstance().createService(SentenceService.class, Api.BASE_URL_ALLARTICLE);
 
         loadArticle(type, page);
     }
 
     private void loadArticle(String type, String page) {
 
-        Call<ResponseBody> call = allarticleService.loadAllarticle(type, page);
+        Call<ResponseBody> call = mSentenceService.loadAllarticle(type, page);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override

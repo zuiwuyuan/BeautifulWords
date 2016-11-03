@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.chenyuan.sentence.http.Api;
 import com.chenyuan.sentence.http.ServiceFactory;
-import com.chenyuan.sentence.http.service.AllarticleService;
+import com.chenyuan.sentence.http.service.SentenceService;
 import com.chenyuan.sentence.mvp.model.IOrignalModel;
 import com.chenyuan.sentence.mvp.model.entity.SentenceDetail;
 import com.chenyuan.sentence.mvp.presenter.callback.OnOrinalListener;
@@ -21,7 +21,7 @@ import retrofit2.Response;
 
 public class OrignalModelImpl implements IOrignalModel {
 
-    private AllarticleService allarticleService;
+    private SentenceService mSentenceService;
 
     private OnOrinalListener mListener;
 
@@ -33,14 +33,14 @@ public class OrignalModelImpl implements IOrignalModel {
         this.mContext = context;
         this.mListener = listener;
 
-        this.allarticleService = ServiceFactory.getInstance().createService(AllarticleService.class, Api.BASE_URL_ORIGINAL);
+        this.mSentenceService = ServiceFactory.getInstance().createService(SentenceService.class, Api.BASE_URL_ORIGINAL);
 
         loadOriginal(type, page);
     }
 
     private void loadOriginal(String type, String page) {
 
-        Call<ResponseBody> call = allarticleService.loadOrignal(type, page);
+        Call<ResponseBody> call = mSentenceService.loadOrignal(type, page);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override

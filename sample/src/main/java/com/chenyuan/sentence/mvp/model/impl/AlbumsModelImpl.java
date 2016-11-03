@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.chenyuan.sentence.http.Api;
 import com.chenyuan.sentence.http.ServiceFactory;
-import com.chenyuan.sentence.http.service.AllarticleService;
+import com.chenyuan.sentence.http.service.SentenceService;
 import com.chenyuan.sentence.mvp.model.IAlbumsModel;
 import com.chenyuan.sentence.mvp.model.entity.SentenceCollection;
 import com.chenyuan.sentence.mvp.presenter.callback.OnAlbumsListener;
@@ -21,7 +21,7 @@ import retrofit2.Response;
 
 public class AlbumsModelImpl implements IAlbumsModel {
 
-    private AllarticleService allarticleService;
+    private SentenceService mSentenceService;
 
     private OnAlbumsListener mListener;
 
@@ -33,14 +33,14 @@ public class AlbumsModelImpl implements IAlbumsModel {
         this.mContext = context;
         this.mListener = listener;
 
-        this.allarticleService = ServiceFactory.getInstance().createService(AllarticleService.class, Api.BASE_URL_ALBUMS);
+        this.mSentenceService = ServiceFactory.getInstance().createService(SentenceService.class, Api.BASE_URL_ALBUMS);
 
         loadArticle(type, page);
     }
 
     private void loadArticle(String type, String page) {
 
-        Call<ResponseBody> call = allarticleService.loadAlbums(type, page);
+        Call<ResponseBody> call = mSentenceService.loadAlbums(type, page);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override

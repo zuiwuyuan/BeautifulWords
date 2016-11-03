@@ -8,7 +8,7 @@ public class Api {
     // 原创句子
     public static final String BASE_URL_ORIGINAL = "http://www.juzimi.com/original/";
 
-    // 精选句集/最新句集
+    // 句集
     public static final String BASE_URL_ALBUMS = "http://www.juzimi.com/";
 
     // 美图美句
