@@ -84,6 +84,10 @@ public class MeiTuwenAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
             viewHolder.itemView.setTag(position);
             viewHolder.itemView.setOnClickListener(onItemClick);
+        } else {
+            Glide.clear(viewHolder.imgView);
+            // remove the placeholder (optional); read comments below
+            viewHolder.imgView.setImageDrawable(null);
         }
     }
 

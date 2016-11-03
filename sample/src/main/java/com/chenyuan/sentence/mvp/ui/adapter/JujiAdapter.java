@@ -73,6 +73,10 @@ public class JujiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             viewHolder.itemView.setTag(position);
             viewHolder.itemView.setOnClickListener(onItemClick);
+        } else {
+            Glide.clear(viewHolder.imgView);
+            // remove the placeholder (optional); read comments below
+            viewHolder.imgView.setImageDrawable(null);
         }
     }
 
