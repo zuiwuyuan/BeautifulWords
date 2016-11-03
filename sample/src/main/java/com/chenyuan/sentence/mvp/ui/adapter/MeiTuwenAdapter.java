@@ -70,6 +70,7 @@ public class MeiTuwenAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     .load(sentenceImageText.getPic())
                     .asBitmap()
                     .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                    .skipMemoryCache(true)
                     .into(viewHolder.imgView);
 
             if (StringUtil.isEmpty(sentenceImageText.getDesc())) {

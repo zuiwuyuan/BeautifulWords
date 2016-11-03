@@ -77,6 +77,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     .load(sentenceSimple.getImgUrl())
                     .asBitmap()
                     .centerCrop()
+                    .skipMemoryCache(true)
                     .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                     .into(viewHolder.imgView);
 

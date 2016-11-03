@@ -65,6 +65,7 @@ public class JujiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     .asBitmap()
                     .centerCrop()
                     .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                    .skipMemoryCache(true)
                     .into(viewHolder.imgView);
 
             viewHolder.textTitle.setText(sentenceCollection.getTitle());
