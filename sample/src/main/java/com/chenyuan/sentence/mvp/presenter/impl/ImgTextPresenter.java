@@ -22,13 +22,13 @@ public class ImgTextPresenter implements IMeituPresenter, OnImgTextListener {
     }
 
     @Override
-    public void loadImgText(Context context, String type, String page) {
-        iImgTextModel.loadMeiju(context, type, page, this);
+    public void loadImgText(Context context, boolean isFirst, String type, String page) {
+        iImgTextModel.loadMeiju(context, isFirst, type, page, this);
     }
 
     @Override
-    public void loadImgText(Context context, String page) {
-        iImgTextModel.loadMeiju(context, page, this);
+    public void loadImgText(Context context, boolean isFirst, String page) {
+        iImgTextModel.loadMeiju(context, isFirst, page, this);
     }
 
     @Override

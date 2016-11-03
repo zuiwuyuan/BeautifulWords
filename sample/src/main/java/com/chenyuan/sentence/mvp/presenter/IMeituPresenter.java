@@ -7,8 +7,8 @@ import android.content.Context;
  */
 public interface IMeituPresenter {
 
-    void loadImgText(Context context, String type, String page);
+    void loadImgText(Context context, boolean isFirst, String type, String page);
 
-    void loadImgText(Context context, String page);
+    void loadImgText(Context context, boolean isFirst, String page);
 
 }

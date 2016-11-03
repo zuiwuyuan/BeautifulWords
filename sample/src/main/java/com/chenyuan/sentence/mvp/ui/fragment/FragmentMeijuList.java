@@ -161,9 +161,9 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
     private void qryMeijus() {
 
         if (TextUtils.isEmpty(type)) {
-            imgTextPresenter.loadImgText(getActivity(), page);
+            imgTextPresenter.loadImgText(getActivity(), isRefresh, page);
         } else {
-            imgTextPresenter.loadImgText(getActivity(), type, page);
+            imgTextPresenter.loadImgText(getActivity(), isRefresh, type, page);
         }
     }
 
@@ -175,6 +175,8 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
             ((ViewGroup) view.getParent()).removeView(view);
         }
     }
+
+    private String totalpage;
 
     @Override
     public void onSuccess(SceneListDetail sceneListDetail) {
@@ -189,18 +191,20 @@ public class FragmentMeijuList extends Fragment implements IMeituMeijuView {
             page = "" + i_page;
         }
 
-        if (page.equals(sceneListDetail.page)) {
-            mHasMore = false;
-        }
-
-        LogUtils.e("mHasMore : "+mHasMore);
-
-
         if (isRefresh) {
+
             mDatas.clear();
 
             isRefresh = false;
+
+            totalpage = sceneListDetail.page;
         }
+
+        if (page.equals(totalpage)) {
+            mHasMore = false;
+        }
+
+        LogUtils.e("mHasMore : " + mHasMore + "  currentpage : " + page + "  totalpage : " + totalpage);
 
         if (sentenceImageTexts != null) {
             mDatas.addAll(sentenceImageTexts);

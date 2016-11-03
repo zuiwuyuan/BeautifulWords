@@ -32,7 +32,7 @@ public class JuziDetailPresenter implements IJuziDetailPresenter, OnJuziDetailLi
     }
 
     @Override
-    public void loadJuziDetail(Context context, String url) {
-        mIJuziDetailModel.loadOriginal(context, url, this);
+    public void loadJuziDetail(Context context, boolean isFrist, String url) {
+        mIJuziDetailModel.loadOriginal(context, isFrist, url, this);
     }
 }

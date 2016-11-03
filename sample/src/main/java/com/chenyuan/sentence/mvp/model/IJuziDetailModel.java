@@ -6,5 +6,5 @@ import com.chenyuan.sentence.mvp.presenter.callback.OnJuziDetailListener;
 
 public interface IJuziDetailModel {
 
-    void loadOriginal(Context context, String url, OnJuziDetailListener listener);
+    void loadOriginal(Context context, boolean isFrist, String url, OnJuziDetailListener listener);
 }

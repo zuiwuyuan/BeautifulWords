@@ -36,6 +36,8 @@ import butterknife.ButterKnife;
  */
 public class JujiDetailActivity extends AppCompatActivity implements IJuziDetailView {
 
+    private String baseurl;
+
     private String url;
 
     private JuziDetailPresenter mJuziDetailPresenter;
@@ -80,6 +82,8 @@ public class JujiDetailActivity extends AppCompatActivity implements IJuziDetail
         ButterKnife.bind(this);
 
         url = getIntent().getStringExtra("url");
+
+        baseurl = url;
 
         LogUtils.e("url : " + url);
 
@@ -154,8 +158,10 @@ public class JujiDetailActivity extends AppCompatActivity implements IJuziDetail
     };
 
     private void qryJuji() {
-        mJuziDetailPresenter.loadJuziDetail(this, url);
+        mJuziDetailPresenter.loadJuziDetail(this, isRefresh, url);
     }
+
+    private String totalpage;
 
     @Override
     public void onSuccess(SceneListDetail sceneListDetail) {
@@ -170,15 +176,24 @@ public class JujiDetailActivity extends AppCompatActivity implements IJuziDetail
             page = "" + i_page;
         }
 
-        if (page.equals(sceneListDetail.page)) {
-            mHasMore = false;
-        }
 
         if (isRefresh) {
+
             mDatas.clear();
 
             isRefresh = false;
+
+            totalpage = sceneListDetail.page;
         }
+
+        url = baseurl + "?page=" + page;
+
+        if (page.equals(totalpage)) {
+            mHasMore = false;
+        }
+
+        LogUtils.e("mHasMore : " + mHasMore + "  currentpage : " + page + "  totalpage : " + totalpage);
+
 
         if (sentenceImageTexts != null) {
             mDatas.addAll(sentenceImageTexts);

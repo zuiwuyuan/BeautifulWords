@@ -29,16 +29,16 @@ public class JuziDetailModelImpl implements IJuziDetailModel {
     private Context mContext;
 
     @Override
-    public void loadOriginal(Context context, String url, OnJuziDetailListener listener) {
+    public void loadOriginal(Context context, boolean isFrist, String url, OnJuziDetailListener listener) {
         this.mContext = context;
         this.mListener = listener;
 
         this.allarticleService = ServiceFactory.getInstance().createService(AllarticleService.class, Api.BASE_URL_ORIGINAL);
 
-        loadData(url);
+        loadData(isFrist, url);
     }
 
-    private void loadData(String url) {
+    private void loadData(final boolean isFrist, String url) {
 
         Call<ResponseBody> call = allarticleService.loadJuziDetail(url);
 
@@ -53,7 +53,7 @@ public class JuziDetailModelImpl implements IJuziDetailModel {
 
                 SceneListDetail sceneListDetail = null;
                 try {
-                    sceneListDetail = DocParseUtil.parseJuziDetail(result);
+                    sceneListDetail = DocParseUtil.parseJuziDetail(isFrist, result);
 
                 } catch (Exception e) {
                     e.printStackTrace();

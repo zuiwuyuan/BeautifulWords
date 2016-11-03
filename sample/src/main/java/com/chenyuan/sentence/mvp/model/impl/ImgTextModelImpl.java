@@ -29,29 +29,29 @@ public class ImgTextModelImpl implements IImgTextModel {
     private Context mContext;
 
     @Override
-    public void loadMeiju(Context context, String type, String page, OnImgTextListener listener) {
+    public void loadMeiju(Context context, boolean isFirst, String type, String page, OnImgTextListener listener) {
 
         this.mContext = context;
         this.mListener = listener;
 
         this.allarticleService = ServiceFactory.getInstance().createService(AllarticleService.class, Api.BASE_URL_MEITUMEIJU);
 
-        loadMeiju(type, page);
+        loadMeiju(isFirst, type, page);
 
     }
 
     @Override
-    public void loadMeiju(Context context, String page, OnImgTextListener listener) {
+    public void loadMeiju(Context context, boolean isFirst, String page, OnImgTextListener listener) {
 
         this.mContext = context;
         this.mListener = listener;
 
         this.allarticleService = ServiceFactory.getInstance().createService(AllarticleService.class, Api.BASE_URL_MEITUMEIJU);
 
-        loadMeiju(null, page);
+        loadMeiju(isFirst, null, page);
     }
 
-    private void loadMeiju(String type, String page) {
+    private void loadMeiju(final boolean isFirst, String type, String page) {
 
         Call<ResponseBody> call = null;
 
@@ -78,7 +78,7 @@ public class ImgTextModelImpl implements IImgTextModel {
 
                 String result = StringUtil.inToString(inputStream);
 
-                SceneListDetail sceneListDetail = DocParseUtil.parseMeiju(result);
+                SceneListDetail sceneListDetail = DocParseUtil.parseMeiju(isFirst, result);
 
                 mListener.onSuccess(sceneListDetail);
             }
