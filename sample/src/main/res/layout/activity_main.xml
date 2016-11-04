@@ -21,7 +21,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom">
 
-
     </com.ashokvarma.bottomnavigation.BottomNavigationBar>
 
 

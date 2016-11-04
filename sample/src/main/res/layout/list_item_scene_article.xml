@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:foreground="?android:attr/selectableItemBackground"
     card_view:cardBackgroundColor="#FFFFFF"
-    card_view:cardCornerRadius="2dp"
+    card_view:cardCornerRadius="4dp"
     card_view:cardElevation="2dp"
     card_view:cardUseCompatPadding="true">
 
@@ -18,7 +18,9 @@
         <ImageView
             android:id="@+id/imgView"
             android:layout_width="match_parent"
-            android:layout_height="260dp" />
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
+            />
 
         <TextView
             android:id="@+id/textDesc"
