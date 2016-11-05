@@ -69,6 +69,7 @@ public class MeiTuwenAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             Glide.with(mContext)
                     .load(sentenceImageText.getPic())
                     .asBitmap()
+                    .placeholder(R.drawable.load_default_img)
                     .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                     .skipMemoryCache(true)
                     .into(viewHolder.imgView);

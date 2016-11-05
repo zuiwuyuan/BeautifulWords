@@ -63,6 +63,7 @@ public class JujiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             Glide.with(mContext)
                     .load(sentenceCollection.getImgUrl())
                     .asBitmap()
+                    .placeholder(R.drawable.load_default_img)
                     .centerCrop()
                     .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                     .skipMemoryCache(true)

@@ -76,6 +76,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             Glide.with(mContext)
                     .load(sentenceSimple.getImgUrl())
                     .asBitmap()
+                    .placeholder(R.drawable.load_default_img)
                     .centerCrop()
                     .skipMemoryCache(true)
                     .diskCacheStrategy(DiskCacheStrategy.SOURCE)
