@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -97,6 +98,10 @@ public class JujiDetailActivity extends AppCompatActivity implements IJuziDetail
 
     private void initView() {
 
+        ActionBar mActionBar = getSupportActionBar();
+        mActionBar.setHomeButtonEnabled(true);
+        mActionBar.setDisplayHomeAsUpEnabled(true);
+        mActionBar.setTitle(getString(R.string.app_name));
 
         mDatas = new ArrayList<>();
 
@@ -222,4 +227,10 @@ public class JujiDetailActivity extends AppCompatActivity implements IJuziDetail
             LogUtils.e(sentenceImageText);
         }
     };
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return super.onSupportNavigateUp();
+    }
 }

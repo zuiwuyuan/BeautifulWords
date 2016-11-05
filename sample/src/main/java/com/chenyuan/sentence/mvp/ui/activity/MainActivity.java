@@ -1,12 +1,16 @@
 package com.chenyuan.sentence.mvp.ui.activity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
+import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.chenyuan.sentence.R;
+import com.chenyuan.sentence.common.ActivityController;
 import com.chenyuan.sentence.mvp.ui.common.BaseActivity;
 import com.chenyuan.sentence.mvp.ui.fragment.FragmentAllArticle;
 import com.chenyuan.sentence.mvp.ui.fragment.FragmentJuji;
@@ -29,6 +33,22 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     private FragmentOriginal fragmentOriginal;
 
     private Unbinder unbinder;
+
+    // 定义一个变量，来标识是否退出
+    private static boolean enableExit = false;
+
+    // 处理请求返回信息
+    private MyHandler mHandler = new MyHandler();
+
+    private static class MyHandler extends Handler {
+        public void handleMessage(android.os.Message msg) {
+            switch (msg.what) {
+                case 0:
+                    enableExit = false;
+                    break;
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,5 +182,22 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     protected void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (!enableExit) {
+                enableExit = true;
+                Toast.makeText(MainActivity.this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                // 利用handler延迟发送更改状态信息
+                mHandler.sendEmptyMessageDelayed(0, 3000);
+            } else {
+                ActivityController.exitApp();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
