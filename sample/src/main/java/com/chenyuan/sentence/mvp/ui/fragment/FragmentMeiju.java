@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
-public class FragmentMeiju extends Fragment {
+public class FragmentMeiju extends BaseFragment {
 
 
     private static final String TYPE1 = null;

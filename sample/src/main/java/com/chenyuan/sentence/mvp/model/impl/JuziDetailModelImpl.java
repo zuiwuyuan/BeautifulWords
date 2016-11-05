@@ -44,19 +44,22 @@ public class JuziDetailModelImpl implements IJuziDetailModel {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
-                InputStream inputStream = response.body().byteStream();
-
-                String result = StringUtil.inToString(inputStream);
-                System.out.println(result);
-
                 SceneListDetail sceneListDetail = null;
-                try {
-                    sceneListDetail = DocParseUtil.parseJuziDetail(isFrist, result);
 
-                } catch (Exception e) {
-                    e.printStackTrace();
+                if (response != null && response.body() != null) {
+                    InputStream inputStream = response.body().byteStream();
+
+                    String result = StringUtil.inToString(inputStream);
+//                    System.out.println(result);
+
+                    try {
+                        sceneListDetail = DocParseUtil.parseJuziDetail(isFrist, result);
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
                 }
-
                 mListener.onSuccess(sceneListDetail);
             }
 

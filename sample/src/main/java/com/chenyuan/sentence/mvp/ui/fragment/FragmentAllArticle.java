@@ -23,7 +23,7 @@ import butterknife.Unbinder;
 /**
  * 名人名句
  */
-public class FragmentAllArticle extends Fragment {
+public class FragmentAllArticle extends BaseFragment {
 
     private static final String TYPE1 = "jingdiantaici";
 

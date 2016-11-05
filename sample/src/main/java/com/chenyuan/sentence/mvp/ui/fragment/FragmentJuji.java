@@ -23,7 +23,7 @@ import butterknife.Unbinder;
 /**
  * 任务Frag
  */
-public class FragmentJuji extends Fragment {
+public class FragmentJuji extends BaseFragment {
 
     private static final String TYPE1 = "albums";
 

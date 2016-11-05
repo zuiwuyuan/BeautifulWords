@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ActivityController {
 
-    public static List<Activity> activities = new ArrayList<Activity>();
+    public static final List<Activity> activities = new ArrayList<Activity>();
 
     public static void addActivity(Activity activity) {
         activities.add(activity);
@@ -18,12 +18,10 @@ public class ActivityController {
     }
 
     public static void finishAll() {
-        if (activities != null) {
-            synchronized (activities) {
-                for (Activity act : activities) {
-                    if (act != null && !act.isFinishing())
-                        act.finish();
-                }
+        synchronized (activities) {
+            for (Activity act : activities) {
+                if (act != null && !act.isFinishing())
+                    act.finish();
             }
         }
     }

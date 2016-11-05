@@ -23,7 +23,7 @@ import butterknife.Unbinder;
 /**
  * 设置frag
  */
-public class FragmentOriginal extends Fragment {
+public class FragmentOriginal extends BaseFragment {
 
 
     private static final String TYPE1 = "ju";

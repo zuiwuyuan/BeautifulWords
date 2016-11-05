@@ -171,6 +171,13 @@ public class JujiDetailActivity extends AppCompatActivity implements IJuziDetail
     @Override
     public void onSuccess(SceneListDetail sceneListDetail) {
 
+        if (sceneListDetail == null) {
+            rotateloading.stop();
+            layoutSwipeRefresh.setRefreshing(false);
+
+            RecyclerViewStateUtils.setFooterViewState(listJuzi, RecyclerViewLoadingFooter.State.Normal);
+            return;
+        }
         List<SentenceImageText> sentenceImageTexts = sceneListDetail.mImageTexts;
 
         if (page == null) {

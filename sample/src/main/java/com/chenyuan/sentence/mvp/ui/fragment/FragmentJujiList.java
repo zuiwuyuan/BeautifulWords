@@ -2,7 +2,6 @@ package com.chenyuan.sentence.mvp.ui.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,7 +26,7 @@ import com.victor.loading.rotate.RotateLoading;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FragmentJujiList extends Fragment implements IAlbumsView {
+public class FragmentJujiList extends BaseFragment implements IAlbumsView {
 
     private static final String ARG_TYPE = "type";
 

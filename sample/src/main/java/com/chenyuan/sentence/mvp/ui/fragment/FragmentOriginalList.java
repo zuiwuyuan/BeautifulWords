@@ -2,7 +2,6 @@ package com.chenyuan.sentence.mvp.ui.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,23 +9,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.apkfuns.logutils.LogUtils;
-import com.lnyp.flexibledivider.HorizontalDividerItemDecoration;
-import com.lnyp.recyclerview.EndlessRecyclerOnScrollListener;
-import com.lnyp.recyclerview.HeaderAndFooterRecyclerViewAdapter;
-import com.lnyp.recyclerview.RecyclerViewLoadingFooter;
-import com.lnyp.recyclerview.RecyclerViewStateUtils;
 import com.chenyuan.sentence.R;
 import com.chenyuan.sentence.mvp.model.entity.SentenceDetail;
 import com.chenyuan.sentence.mvp.presenter.impl.OrignalPresenter;
 import com.chenyuan.sentence.mvp.ui.adapter.OriginalAdapter;
 import com.chenyuan.sentence.mvp.ui.view.IOrignalView;
+import com.lnyp.flexibledivider.HorizontalDividerItemDecoration;
+import com.lnyp.recyclerview.EndlessRecyclerOnScrollListener;
+import com.lnyp.recyclerview.HeaderAndFooterRecyclerViewAdapter;
+import com.lnyp.recyclerview.RecyclerViewLoadingFooter;
+import com.lnyp.recyclerview.RecyclerViewStateUtils;
 import com.victor.loading.rotate.RotateLoading;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FragmentOriginalList extends Fragment implements IOrignalView {
+public class FragmentOriginalList extends BaseFragment implements IOrignalView {
 
     private static final String ARG_TYPE = "type";
 
