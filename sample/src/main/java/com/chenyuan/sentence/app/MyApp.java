@@ -42,7 +42,7 @@ public class MyApp extends Application {
         CrashHandler crashHandler = CrashHandler.getInstance();
         crashHandler.init(getApplicationContext());
 
-        LogUtils.configAllowLog = true;
+        LogUtils.configAllowLog = false;
         LogUtils.configTagPrefix = "lnyp-";
 
     }
