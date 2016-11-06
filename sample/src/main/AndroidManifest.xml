@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.chenyuan.sentence">
+          package="com.chenyuan.sentence">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:name=".app.MyApp"
@@ -16,47 +16,29 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".mvp.ui.activity.SplashActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".mvp.ui.activity.MainActivity" />
-
-        <activity android:name=".mvp.ui.activity.JujiDetailActivity" />
-
-        <service
-            android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"
-            android:enabled="false"
-            android:process=":leakcanary" />
-        <service
-            android:name="com.squareup.leakcanary.DisplayLeakService"
-            android:enabled="false" />
+        <activity
+            android:name=".mvp.ui.activity.MainActivity"
+            android:screenOrientation="portrait"/>
 
         <activity
-            android:name="com.squareup.leakcanary.internal.DisplayLeakActivity"
-            android:enabled="false"
-            android:icon="@drawable/leak_canary_icon"
-            android:label="@string/leak_canary_display_activity_label"
-            android:taskAffinity="com.squareup.leakcanary"
-            android:theme="@style/leak_canary_LeakCanary.Base">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
+            android:name=".mvp.ui.activity.JujiDetailActivity"
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="com.chenyuan.sentence.common.GlideConfiguration"
-            android:value="GlideModule" />
+            android:value="GlideModule"/>
 
         <receiver android:name=".receiver.NetWorkReceiver">
             <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
             </intent-filter>
         </receiver>
 
