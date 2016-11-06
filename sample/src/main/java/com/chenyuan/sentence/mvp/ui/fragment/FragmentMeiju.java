@@ -48,6 +48,7 @@ public class FragmentMeiju extends BaseFragment {
 
         unbinder = ButterKnife.bind(this, view);
 
+
         initControls();
 
         return view;

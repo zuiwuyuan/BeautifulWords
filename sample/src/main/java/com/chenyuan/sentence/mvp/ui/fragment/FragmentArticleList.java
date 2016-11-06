@@ -115,7 +115,7 @@ public class FragmentArticleList extends BaseFragment implements IAllarticleView
 
         listJuzi.addOnScrollListener(mOnScrollListener);
 
-        layoutSwipeRefresh.setColorSchemeColors(Color.parseColor("#3F51B5"));
+        layoutSwipeRefresh.setColorSchemeColors(getResources().getColor(R.color.refresh_color));
         layoutSwipeRefresh.setOnRefreshListener(onRefreshListener);
     }
 

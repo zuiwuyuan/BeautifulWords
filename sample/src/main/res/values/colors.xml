@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#007FFE</color>
+    <color name="colorPrimaryDark">#0072E3</color>
     <color name="colorAccent">#FF4081</color>
 
-    <!--底部导航栏图片灰色-->
-    <color name="nav_gray">#959595</color>
+    <!--底部导航栏图片颜色-->
+    <color name="bottom_nav_normal">#C7CCD3</color>
+    <color name="bottom_nav_selected">#0B85F9</color>
+
+
+    <color name="top_nav_bg">#007FFE</color>
+
     <!--白色-->
     <color name="white">#FFFFFF</color>
 
-    <color name="activity_bg">#EFEFEF</color>
-    <color name="divider_color">#EFEFEF</color>
+    <color name="top_tab_textcolor_normal">#57C1FE</color>
 
-    <color name="refresh_color">#3F51B5</color>
+    <color name="activity_bg">#F3F7F6</color>
+    <color name="divider_color">#F3F7F6</color>
 
-    <color name="loading_color">#3F51B5</color>
+    <color name="refresh_color">#007FFE</color>
+
+    <color name="loading_color">#007FFE</color>
 
 </resources>

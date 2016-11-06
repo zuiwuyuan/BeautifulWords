@@ -19,11 +19,10 @@
 
     <com.victor.loading.rotate.RotateLoading
         android:id="@+id/rotateloading"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/dimen_loading_size"
+        android:layout_height="@dimen/dimen_loading_size"
         android:layout_gravity="center"
         app:loading_color="@color/loading_color"
         app:loading_speed="6"
-        app:loading_width="3dp"/>
-
+        app:loading_width="2dp"/>
 </FrameLayout>

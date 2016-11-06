@@ -2,7 +2,6 @@ package com.chenyuan.sentence.mvp.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
@@ -117,7 +116,7 @@ public class JujiDetailActivity extends AppCompatActivity implements IJuziDetail
 
         listJuzi.addOnScrollListener(mOnScrollListener);
 
-        layoutSwipeRefresh.setColorSchemeColors(Color.parseColor("#3F51B5"));
+        layoutSwipeRefresh.setColorSchemeColors(getResources().getColor(R.color.refresh_color));
         layoutSwipeRefresh.setOnRefreshListener(onRefreshListener);
     }
 

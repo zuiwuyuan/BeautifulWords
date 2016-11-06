@@ -57,6 +57,8 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
 
         unbinder = ButterKnife.bind(this);
 
+        getSupportActionBar().hide();//隐藏掉整个ActionBar，包括下面的Tabs
+
         initBottomNavBar();
     }
 
@@ -69,8 +71,8 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
 
 
         bottom_navigation_bar_container.setBarBackgroundColor(R.color.white); //背景颜色
-        bottom_navigation_bar_container.setInActiveColor(R.color.nav_gray); //未选中时的颜色
-        bottom_navigation_bar_container.setActiveColor(R.color.colorPrimaryDark);//选中时的颜色
+        bottom_navigation_bar_container.setInActiveColor(R.color.bottom_nav_normal); //未选中时的颜色
+        bottom_navigation_bar_container.setActiveColor(R.color.bottom_nav_selected);//选中时的颜色
 
 
         BottomNavigationItem meijulItem = new BottomNavigationItem(R.mipmap.icon_linggan, "灵感");

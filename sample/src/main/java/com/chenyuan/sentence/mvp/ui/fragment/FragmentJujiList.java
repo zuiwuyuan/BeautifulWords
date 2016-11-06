@@ -1,6 +1,5 @@
 package com.chenyuan.sentence.mvp.ui.fragment;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -113,7 +112,7 @@ public class FragmentJujiList extends BaseFragment implements IAlbumsView {
 
         listJuzi.addOnScrollListener(mOnScrollListener);
 
-        layoutSwipeRefresh.setColorSchemeColors(Color.parseColor("#3F51B5"));
+        layoutSwipeRefresh.setColorSchemeColors(getResources().getColor(R.color.refresh_color));
         layoutSwipeRefresh.setOnRefreshListener(onRefreshListener);
     }
 
