@@ -104,6 +104,7 @@ public class FragmentOriginalList extends BaseFragment implements IOrignalView {
         listJuzi.addItemDecoration(
                 new HorizontalDividerItemDecoration.Builder(getActivity())
                         .colorResId(R.color.divider_color)
+                        .size(15)
                         .build());
 
         listJuzi.addOnScrollListener(mOnScrollListener);

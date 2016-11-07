@@ -9,7 +9,7 @@
                                     android:foreground="?android:attr/selectableItemBackground"
                                     card_view:cardBackgroundColor="#CCFFFFFF"
                                     card_view:cardCornerRadius="4dp"
-                                    card_view:cardElevation="2dp">
+                                    card_view:cardElevation="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +26,6 @@
             android:id="@+id/textDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:lineSpacingExtra="4dp"
             android:padding="10dp"
             android:text="描述"

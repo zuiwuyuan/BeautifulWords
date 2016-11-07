@@ -109,7 +109,7 @@ public class FragmentArticleList extends BaseFragment implements IAllarticleView
         listJuzi.setLayoutManager(gridLayoutManager);
 
         GridSpacingItemDecoration itemDecoration = new GridSpacingItemDecoration.Builder(getActivity(), gridLayoutManager.getSpanCount())
-                .setDividerColor(Color.parseColor("#EFEFEF"))
+                .setDividerColor(Color.parseColor("#F3F7F6"))
                 .build();
         listJuzi.addItemDecoration(itemDecoration);
 

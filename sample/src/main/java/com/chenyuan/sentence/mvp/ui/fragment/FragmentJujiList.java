@@ -107,7 +107,7 @@ public class FragmentJujiList extends BaseFragment implements IAlbumsView {
         listJuzi.addItemDecoration(
                 new HorizontalDividerItemDecoration.Builder(getActivity())
                         .colorResId(R.color.divider_color)
-//                        .size(20)
+                        .size(15)
                         .build());
 
         listJuzi.addOnScrollListener(mOnScrollListener);
