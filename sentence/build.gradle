@@ -10,8 +10,8 @@ android {
         applicationId "com.chenyuan.sentence"
         minSdkVersion 14
         targetSdkVersion 24
-        versionCode 3
-        versionName "1.2"
+        versionCode 4
+        versionName "1.3"
     }
 
     buildTypes {

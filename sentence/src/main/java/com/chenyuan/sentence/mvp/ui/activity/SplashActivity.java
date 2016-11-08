@@ -14,7 +14,7 @@ import com.chenyuan.sentence.mvp.ui.common.BaseActivity;
  */
 public class SplashActivity extends BaseActivity {
 
-    private static final int SHOW_TIME_MIN = 2000;
+    private static final int SHOW_TIME_MIN = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

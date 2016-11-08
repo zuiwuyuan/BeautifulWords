@@ -107,7 +107,7 @@ public class FragmentMeijuList extends BaseFragment implements IMeituMeijuView {
         listJuzi.addItemDecoration(
                 new HorizontalDividerItemDecoration.Builder(getActivity())
                         .colorResId(R.color.divider_color)
-                        .size(15)
+                        .size(4)
                         .build());
 
         listJuzi.addOnScrollListener(mOnScrollListener);

@@ -112,7 +112,7 @@ public class JujiDetailActivity extends AppCompatActivity implements IJuziDetail
         listJuzi.addItemDecoration(
                 new HorizontalDividerItemDecoration.Builder(JujiDetailActivity.this)
                         .colorResId(R.color.divider_color)
-                        .size(15)
+                        .size(4)
                         .build());
 
         listJuzi.addOnScrollListener(mOnScrollListener);
