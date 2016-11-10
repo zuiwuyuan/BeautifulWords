@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chenyuan.sentence.R;
-import com.chenyuan.sentence.mvp.model.entity.SentenceSimple;
+import com.chenyuan.sentence.mvp.model.bean.SentenceSimple;
 
 import java.util.List;
 

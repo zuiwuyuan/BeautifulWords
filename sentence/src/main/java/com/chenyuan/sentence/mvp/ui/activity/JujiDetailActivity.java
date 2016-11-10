@@ -12,8 +12,8 @@ import android.view.View;
 
 import com.apkfuns.logutils.LogUtils;
 import com.chenyuan.sentence.R;
-import com.chenyuan.sentence.mvp.model.entity.SceneListDetail;
-import com.chenyuan.sentence.mvp.model.entity.SentenceImageText;
+import com.chenyuan.sentence.mvp.model.bean.SceneListDetail;
+import com.chenyuan.sentence.mvp.model.bean.SentenceImageText;
 import com.chenyuan.sentence.mvp.presenter.impl.ImgTextPresenter;
 import com.chenyuan.sentence.mvp.presenter.impl.JuziDetailPresenter;
 import com.chenyuan.sentence.mvp.ui.adapter.MeiTuwenAdapter;

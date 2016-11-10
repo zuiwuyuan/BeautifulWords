@@ -1,6 +1,6 @@
 package com.chenyuan.sentence.mvp.presenter.callback;
 
-import com.chenyuan.sentence.mvp.model.entity.SentenceSimple;
+import com.chenyuan.sentence.mvp.model.bean.SentenceSimple;
 
 import java.util.List;
 

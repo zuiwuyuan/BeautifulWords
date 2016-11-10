@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.chenyuan.sentence.R;
-import com.chenyuan.sentence.mvp.model.entity.SentenceDetail;
+import com.chenyuan.sentence.mvp.model.bean.SentenceDetail;
 import com.chenyuan.sentence.mvp.presenter.impl.OrignalPresenter;
 import com.chenyuan.sentence.mvp.ui.adapter.OriginalAdapter;
 import com.chenyuan.sentence.mvp.ui.view.IOrignalView;

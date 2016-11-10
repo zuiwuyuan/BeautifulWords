@@ -3,7 +3,7 @@ package com.chenyuan.sentence.mvp.presenter.impl;
 import android.content.Context;
 
 import com.chenyuan.sentence.mvp.model.IAlbumsModel;
-import com.chenyuan.sentence.mvp.model.entity.SentenceCollection;
+import com.chenyuan.sentence.mvp.model.bean.SentenceCollection;
 import com.chenyuan.sentence.mvp.model.impl.AlbumsModelImpl;
 import com.chenyuan.sentence.mvp.presenter.IAlbumsPresenter;
 import com.chenyuan.sentence.mvp.presenter.callback.OnAlbumsListener;

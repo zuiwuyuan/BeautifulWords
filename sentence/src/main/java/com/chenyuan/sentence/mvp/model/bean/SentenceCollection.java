@@ -1,4 +1,4 @@
-package com.chenyuan.sentence.mvp.model.entity;
+package com.chenyuan.sentence.mvp.model.bean;
 
 /**
  * 精选句集

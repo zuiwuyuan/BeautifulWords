@@ -8,7 +8,7 @@ import com.chenyuan.sentence.http.Api;
 import com.chenyuan.sentence.http.ServiceFactory;
 import com.chenyuan.sentence.http.service.SentenceService;
 import com.chenyuan.sentence.mvp.model.IImgTextModel;
-import com.chenyuan.sentence.mvp.model.entity.SceneListDetail;
+import com.chenyuan.sentence.mvp.model.bean.SceneListDetail;
 import com.chenyuan.sentence.mvp.presenter.callback.OnImgTextListener;
 import com.chenyuan.sentence.util.DocParseUtil;
 import com.chenyuan.sentence.util.StringUtil;

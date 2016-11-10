@@ -6,7 +6,7 @@ import com.chenyuan.sentence.http.Api;
 import com.chenyuan.sentence.http.ServiceFactory;
 import com.chenyuan.sentence.http.service.SentenceService;
 import com.chenyuan.sentence.mvp.model.IOrignalModel;
-import com.chenyuan.sentence.mvp.model.entity.SentenceDetail;
+import com.chenyuan.sentence.mvp.model.bean.SentenceDetail;
 import com.chenyuan.sentence.mvp.presenter.callback.OnOrinalListener;
 import com.chenyuan.sentence.util.DocParseUtil;
 import com.chenyuan.sentence.util.StringUtil;

@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.apkfuns.logutils.LogUtils;
 import com.chenyuan.sentence.R;
-import com.chenyuan.sentence.mvp.model.entity.SentenceCollection;
+import com.chenyuan.sentence.mvp.model.bean.SentenceCollection;
 import com.chenyuan.sentence.mvp.presenter.impl.AlbumsPresenter;
 import com.chenyuan.sentence.mvp.ui.activity.JujiDetailActivity;
 import com.chenyuan.sentence.mvp.ui.adapter.JujiAdapter;

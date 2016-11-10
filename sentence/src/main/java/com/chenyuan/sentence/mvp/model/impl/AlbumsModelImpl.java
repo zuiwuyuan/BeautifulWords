@@ -6,7 +6,7 @@ import com.chenyuan.sentence.http.Api;
 import com.chenyuan.sentence.http.ServiceFactory;
 import com.chenyuan.sentence.http.service.SentenceService;
 import com.chenyuan.sentence.mvp.model.IAlbumsModel;
-import com.chenyuan.sentence.mvp.model.entity.SentenceCollection;
+import com.chenyuan.sentence.mvp.model.bean.SentenceCollection;
 import com.chenyuan.sentence.mvp.presenter.callback.OnAlbumsListener;
 import com.chenyuan.sentence.util.DocParseUtil;
 import com.chenyuan.sentence.util.StringUtil;

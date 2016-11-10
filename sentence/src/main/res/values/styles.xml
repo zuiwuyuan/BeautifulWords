@@ -5,11 +5,11 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <!--<item name="colorAccent">@color/colorAccent</item>-->
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <!-- 启动页面、直接设置windowBackground，可以实现秒启app-->
-    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@mipmap/splash_bg</item>
     </style>
 

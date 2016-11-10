@@ -30,7 +30,8 @@
 
         <activity
             android:name=".mvp.ui.activity.JujiDetailActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
 
         <meta-data
             android:name="com.chenyuan.sentence.common.GlideConfiguration"
@@ -42,6 +43,9 @@
             </intent-filter>
         </receiver>
 
+        <meta-data
+            android:name="BUG_HD_SDK_GENERAL_KEY"
+            android:value="c4eba07f521cf456edd68b9517c24df3"/>
 
     </application>
 

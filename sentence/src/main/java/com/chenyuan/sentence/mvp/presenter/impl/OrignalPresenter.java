@@ -3,7 +3,7 @@ package com.chenyuan.sentence.mvp.presenter.impl;
 import android.content.Context;
 
 import com.chenyuan.sentence.mvp.model.IOrignalModel;
-import com.chenyuan.sentence.mvp.model.entity.SentenceDetail;
+import com.chenyuan.sentence.mvp.model.bean.SentenceDetail;
 import com.chenyuan.sentence.mvp.model.impl.OrignalModelImpl;
 import com.chenyuan.sentence.mvp.presenter.IOrignalPresenter;
 import com.chenyuan.sentence.mvp.presenter.callback.OnOrinalListener;

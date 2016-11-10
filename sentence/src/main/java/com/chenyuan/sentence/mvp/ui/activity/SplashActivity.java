@@ -1,20 +1,28 @@
 package com.chenyuan.sentence.mvp.ui.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.AsyncTask;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.chenyuan.sentence.R;
+import com.chenyuan.sentence.mvp.model.bean.UpgradeBean;
 import com.chenyuan.sentence.mvp.ui.common.BaseActivity;
+import com.chenyuan.sentence.util.AppUtils;
+import com.google.gson.Gson;
+
+import im.fir.sdk.FIR;
+import im.fir.sdk.VersionCheckCallback;
 
 /**
  * 启动页
  */
 public class SplashActivity extends BaseActivity {
 
-    private static final int SHOW_TIME_MIN = 1000;
+    UpgradeBean respUpdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,36 +44,80 @@ public class SplashActivity extends BaseActivity {
 
         setContentView(R.layout.activity_splash);
 
-        new SplashTask().execute();
-
+        checkUpdate();
     }
 
-    public class SplashTask extends AsyncTask<Void, Void, Void> {
+    private void checkUpdate() {
 
-        @Override
-        protected Void doInBackground(Void... voids) {
-            // 最短启动时间
-            long startTime = System.currentTimeMillis();
+        FIR.checkForUpdateInFIR("c4eba07f521cf456edd68b9517c24df3", new VersionCheckCallback() {
+                    @Override
+                    public void onSuccess(String versionJson) {
+                        Log.i("fir", "onSuccess " + "\n" + versionJson);
+                        Gson gson = new Gson();
+                        respUpdate = gson.fromJson(versionJson, UpgradeBean.class);
+                    }
 
-            long loadingTime = System.currentTimeMillis() - startTime;
+                    @Override
+                    public void onFail(Exception exception) {
+                        exception.printStackTrace();
+                    }
 
-            if (loadingTime < SHOW_TIME_MIN) {
-                try {
-                    Thread.sleep(SHOW_TIME_MIN - loadingTime);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    @Override
+                    public void onStart() {
+                        Log.i("fir", "onStart ");
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        Log.i("fir", "onFinish ");
+                        try {
+
+                            // 判断是否需要更新
+                            if (respUpdate.getVersion() > AppUtils.getVersionCode(SplashActivity.this)) {
+                                String update_desc = respUpdate.getChangelog();
+                                showDialog(update_desc);
+                            } else {
+                                jumpToMain();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            jumpToMain();
+                        }
+                    }
                 }
+        );
+    }
+
+    /**
+     * 这是兼容的 AlertDialog
+     */
+    private void showDialog(String update_desc) {
+        android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(this);
+        builder.setTitle("升级提示");
+        builder.setMessage(update_desc);
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface anInterface, int i) {
+                jumpToMain();
             }
-            return null;
-        }
+        });
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface anInterface, int i) {
+                Uri uri = Uri.parse(respUpdate.getInstall_url());
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                SplashActivity.this.startActivity(intent);
+            }
+        });
+        builder.show();
+    }
 
-        @Override
-        protected void onPostExecute(Void result) {
-            super.onPostExecute(result);
+    private void jumpToMain() {
+        Intent intent = new Intent();
 
-            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+        intent.setClass(SplashActivity.this, MainActivity.class);
 
-            SplashActivity.this.finish();
-        }
+        startActivity(intent);
+        SplashActivity.this.finish();
     }
 }

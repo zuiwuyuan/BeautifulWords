@@ -1,6 +1,6 @@
 package com.chenyuan.sentence.mvp.presenter.callback;
 
-import com.chenyuan.sentence.mvp.model.entity.SceneListDetail;
+import com.chenyuan.sentence.mvp.model.bean.SceneListDetail;
 
 public interface OnJuziDetailListener {
 

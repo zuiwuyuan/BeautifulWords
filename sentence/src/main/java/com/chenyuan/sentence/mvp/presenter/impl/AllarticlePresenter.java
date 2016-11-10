@@ -3,7 +3,7 @@ package com.chenyuan.sentence.mvp.presenter.impl;
 import android.content.Context;
 
 import com.chenyuan.sentence.mvp.model.IAllarticleModel;
-import com.chenyuan.sentence.mvp.model.entity.SentenceSimple;
+import com.chenyuan.sentence.mvp.model.bean.SentenceSimple;
 import com.chenyuan.sentence.mvp.model.impl.AllarticleModelImpl;
 import com.chenyuan.sentence.mvp.presenter.IAllarticlePresenter;
 import com.chenyuan.sentence.mvp.presenter.callback.OnAllarticleListener;

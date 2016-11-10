@@ -1,10 +1,10 @@
 package com.chenyuan.sentence.util;
 
-import com.chenyuan.sentence.mvp.model.entity.SceneListDetail;
-import com.chenyuan.sentence.mvp.model.entity.SentenceCollection;
-import com.chenyuan.sentence.mvp.model.entity.SentenceDetail;
-import com.chenyuan.sentence.mvp.model.entity.SentenceImageText;
-import com.chenyuan.sentence.mvp.model.entity.SentenceSimple;
+import com.chenyuan.sentence.mvp.model.bean.SceneListDetail;
+import com.chenyuan.sentence.mvp.model.bean.SentenceCollection;
+import com.chenyuan.sentence.mvp.model.bean.SentenceDetail;
+import com.chenyuan.sentence.mvp.model.bean.SentenceImageText;
+import com.chenyuan.sentence.mvp.model.bean.SentenceSimple;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

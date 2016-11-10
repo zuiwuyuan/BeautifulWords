@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.apkfuns.logutils.LogUtils;
 import com.chenyuan.sentence.R;
-import com.chenyuan.sentence.mvp.model.entity.SentenceSimple;
+import com.chenyuan.sentence.mvp.model.bean.SentenceSimple;
 import com.chenyuan.sentence.mvp.presenter.impl.AllarticlePresenter;
 import com.chenyuan.sentence.mvp.ui.activity.JujiDetailActivity;
 import com.chenyuan.sentence.mvp.ui.adapter.ArticleAdapter;

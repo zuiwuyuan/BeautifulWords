@@ -6,6 +6,8 @@ import android.content.Context;
 import com.apkfuns.logutils.LogUtils;
 import com.chenyuan.sentence.common.CrashHandler;
 
+import im.fir.sdk.FIR;
+
 
 public class MyApp extends Application {
 
@@ -25,6 +27,8 @@ public class MyApp extends Application {
     }
 
     private void initUtil() {
+
+        FIR.init(this);
 
         CrashHandler crashHandler = CrashHandler.getInstance();
         crashHandler.init(getApplicationContext());

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.chenyuan.sentence.R;
-import com.chenyuan.sentence.mvp.model.entity.SentenceDetail;
+import com.chenyuan.sentence.mvp.model.bean.SentenceDetail;
 
 import java.util.List;
 

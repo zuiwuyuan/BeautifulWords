@@ -3,7 +3,7 @@ package com.chenyuan.sentence.mvp.presenter.impl;
 import android.content.Context;
 
 import com.chenyuan.sentence.mvp.model.IJuziDetailModel;
-import com.chenyuan.sentence.mvp.model.entity.SceneListDetail;
+import com.chenyuan.sentence.mvp.model.bean.SceneListDetail;
 import com.chenyuan.sentence.mvp.model.impl.JuziDetailModelImpl;
 import com.chenyuan.sentence.mvp.presenter.IJuziDetailPresenter;
 import com.chenyuan.sentence.mvp.presenter.callback.OnJuziDetailListener;
