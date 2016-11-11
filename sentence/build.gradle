@@ -39,4 +39,5 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.victor:lib:1.0.4'
     compile 'com.apkfuns.logutils:library:1.0.6'
+    compile 'com.davemorrissey.labs:subsampling-scale-image-view:3.5.0'
 }

@@ -64,8 +64,6 @@ public class MeiTuwenAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         if (sentenceImageText != null) {
 
-//            LogUtils.e(sentenceImageText);
-
             Glide.with(mContext)
                     .load(sentenceImageText.getPic())
                     .asBitmap()

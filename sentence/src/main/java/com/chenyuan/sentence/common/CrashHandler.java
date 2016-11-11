@@ -37,7 +37,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
             logPath = Environment.getExternalStorageDirectory()
                     .getAbsolutePath()
                     + File.separator
-                    + "lnyp"
+                    + "chenyuan"
                     + File.separator
                     + "log";
 

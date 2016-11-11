@@ -27,7 +27,7 @@ public class HttpLoggingInterceptor implements Interceptor {
         Response response = chain.proceed(request);
         long tookMs = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startNs);
 
-//        LogUtils.e(response.code() + ' ' + response.message() + " (" + tookMs + "ms" + ')');
+        LogUtils.e(response.code() + ' ' + response.message() + " (" + tookMs + "ms" + ')');
 
         return response;
     }

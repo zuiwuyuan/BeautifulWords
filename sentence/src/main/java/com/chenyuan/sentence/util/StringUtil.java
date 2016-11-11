@@ -16,7 +16,6 @@ public class StringUtil {
         return !isEmpty(value);
     }
 
-
     public static boolean isEmpty(String value, String ignore) {
         if (value == null || value.trim().length() == 0) {
             return true;
@@ -27,10 +26,6 @@ public class StringUtil {
         }
 
         return false;
-    }
-
-    public static boolean isNotEmpty(String value, String ignore) {
-        return !isEmpty(value, ignore);
     }
 
     public static String inToString(InputStream inputStream) {

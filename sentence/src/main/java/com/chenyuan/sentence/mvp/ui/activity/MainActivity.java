@@ -197,6 +197,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                 mHandler.sendEmptyMessageDelayed(0, 3000);
             } else {
                 ActivityController.exitApp();
+
             }
             return true;
         }
