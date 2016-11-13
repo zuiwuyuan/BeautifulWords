@@ -6,8 +6,9 @@
 **【美图美句】 【经典句子】 【句子集】 【原创句子】**
 
 ##效果图
-![灵感短句](http://img.blog.csdn.net/20161113205318603)![经典短句](http://img.blog.csdn.net/20161113205347278)
-![句子集](http://img.blog.csdn.net/20161113205407790)![原创短句](http://img.blog.csdn.net/20161113205425466)
+![灵感短句](https://github.com/zuiwuyuan/BeautifulWords/blob/master/imgs/1.png)![经典短句](https://github.com/zuiwuyuan/BeautifulWords/blob/master/imgs/2.png)
+![句子集](https://github.com/zuiwuyuan/BeautifulWords/blob/master/imgs/3.png)![原创短句](https://github.com/zuiwuyuan/BeautifulWords/blob/master/imgs/4.png)
+![句子详情](https://github.com/zuiwuyuan/BeautifulWords/blob/master/imgs/5.png)
 
 
 ##APK下载地址
