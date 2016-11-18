@@ -8,7 +8,7 @@
 ##效果图
 ![灵感短句](https://github.com/zuiwuyuan/BeautifulWords/blob/master/imgs/1.png)![经典短句](https://github.com/zuiwuyuan/BeautifulWords/blob/master/imgs/2.png)
 ![句子集](https://github.com/zuiwuyuan/BeautifulWords/blob/master/imgs/3.png)![原创短句](https://github.com/zuiwuyuan/BeautifulWords/blob/master/imgs/4.png)
-![句子详情](https://github.com/zuiwuyuan/BeautifulWords/blob/master/imgs/5.png)
+![句子详情](https://github.com/zuiwuyuan/BeautifulWords/blob/master/imgs/5.png)![动态演示](http://odsmd3jav.bkt.clouddn.com/%E6%96%87%E5%AD%97%E6%8E%A7.gif)
 
 
 ##APK下载地址
