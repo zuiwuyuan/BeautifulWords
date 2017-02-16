@@ -31,6 +31,7 @@ public class DocParseUtil {
      */
     public static List<SentenceSimple> parseAllarticle(String result) {
 
+        System.out.println(result);
         Document doc = Jsoup.parse(result);
 
         Elements rowElements = doc.getElementsByClass("views-row");
@@ -52,7 +53,7 @@ public class DocParseUtil {
                 if (views_field_tids != null && views_field_tids.size() > 0) {
                     Element views_field_tid = views_field_tids.get(0);
                     if (views_field_tid != null && views_field_tid.select("img") != null && views_field_tid.select("img").size() > 0) {
-                        String imgUrl = views_field_tid.select("img").get(0).attr("src");
+                        String imgUrl = "http:" + views_field_tid.select("img").get(0).attr("src");
                         sentenceSimple.setImgUrl(imgUrl);
                     }
 
@@ -185,7 +186,7 @@ public class DocParseUtil {
                     Elements imgs = views_field_picture_bare.select("img");
                     if (imgs != null && imgs.size() > 0) {
                         Element img = imgs.first();
-                        String src = img.attr("src");
+                        String src = "http:" + img.attr("src");
 
                         sentenceCollection.setImgUrl(src);
                     }
@@ -260,6 +261,13 @@ public class DocParseUtil {
         return sentenceCollections;
     }
 
+    /**
+     * 美图美剧
+     *
+     * @param isFirst
+     * @param result
+     * @return
+     */
     public static SceneListDetail parseMeiju(boolean isFirst, String result) {
 
         Document doc = Jsoup.parse(result);

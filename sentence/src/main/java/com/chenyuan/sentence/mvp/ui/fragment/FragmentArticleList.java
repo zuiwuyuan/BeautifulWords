@@ -185,6 +185,7 @@ public class FragmentArticleList extends BaseFragment implements IAllarticleView
         }
 
         if (isRefresh) {
+
             mDatas.clear();
 
             isRefresh = false;

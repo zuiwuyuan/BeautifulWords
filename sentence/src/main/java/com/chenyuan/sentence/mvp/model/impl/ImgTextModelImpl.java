@@ -74,13 +74,16 @@ public class ImgTextModelImpl implements IImgTextModel {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
-                InputStream inputStream = response.body().byteStream();
+                if (response != null && response.body() != null) {
+                    InputStream inputStream = response.body().byteStream();
 
-                String result = StringUtil.inToString(inputStream);
+                    String result = StringUtil.inToString(inputStream);
 
-                SceneListDetail sceneListDetail = DocParseUtil.parseMeiju(isFirst, result);
+                    SceneListDetail sceneListDetail = DocParseUtil.parseMeiju(isFirst, result);
 
-                mListener.onSuccess(sceneListDetail);
+                    mListener.onSuccess(sceneListDetail);
+                }
+
             }
 
             @Override
